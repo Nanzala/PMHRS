@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151115205230) do
+ActiveRecord::Schema.define(version: 20151115225939) do
 
   create_table "hospitals", id: false, force: :cascade do |t|
     t.string   "id",         null: false
@@ -24,5 +24,66 @@ ActiveRecord::Schema.define(version: 20151115205230) do
   end
 
   add_index "hospitals", ["id"], name: "index_hospitals_on_id", unique: true
+
+  create_table "med_tests", force: :cascade do |t|
+    t.string   "record_id"
+    t.string   "test"
+    t.string   "result"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "medications", force: :cascade do |t|
+    t.string   "record_id"
+    t.string   "medication"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "patients", id: false, force: :cascade do |t|
+    t.string   "id",                  null: false
+    t.string   "name"
+    t.string   "gender"
+    t.date     "date_of_birth"
+    t.string   "phone"
+    t.string   "email"
+    t.string   "next_of_kin"
+    t.string   "next_of_kin_contact"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
+
+  add_index "patients", ["id"], name: "index_patients_on_id", unique: true
+
+  create_table "records", id: false, force: :cascade do |t|
+    t.string   "id",             null: false
+    t.string   "patient_id",     null: false
+    t.string   "hospital_id",    null: false
+    t.string   "staff_id",       null: false
+    t.integer  "height"
+    t.integer  "weight"
+    t.integer  "temperature"
+    t.string   "blood_pressure"
+    t.string   "symptoms"
+    t.string   "diagnosis"
+    t.string   "medication_id"
+    t.string   "med_test_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "records", ["id"], name: "index_records_on_id", unique: true
+
+  create_table "staffs", id: false, force: :cascade do |t|
+    t.string   "id",         null: false
+    t.string   "name"
+    t.string   "role"
+    t.string   "address"
+    t.string   "phone"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "staffs", ["id"], name: "index_staffs_on_id", unique: true
 
 end
