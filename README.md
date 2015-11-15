@@ -6,6 +6,6 @@ Patient Medical History Record System is a secure central database of patients' 
 
 ## Contributors
 
-Kate Kimani <https://github.com/katekimani>
-Sam Nyavor <https://github.com/orignMaster>
-Tabby Mayabi <https://github.com/Nanzala>
+* Kate Kimani <https://github.com/katekimani>
+* Sam Nyavor <https://github.com/orignMaster>
+* Tabby Mayabi <https://github.com/Nanzala>
