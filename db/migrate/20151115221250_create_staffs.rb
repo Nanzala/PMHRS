@@ -1,7 +1,6 @@
 class CreateStaffs < ActiveRecord::Migration
   def change
-    create_table :staffs, id:false do |t|
-      t.string :id, null:false
+      create_table :staffs, id: :uuid, default: 'gen_random_uuid()', force:true do |t|
       t.string :name
       t.string :role
       t.string :address
@@ -9,6 +8,5 @@ class CreateStaffs < ActiveRecord::Migration
 
       t.timestamps null: false
     end
-    add_index :staffs, :id, unique:true
   end
 end

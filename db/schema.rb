@@ -13,8 +13,11 @@
 
 ActiveRecord::Schema.define(version: 20151115225939) do
 
-  create_table "hospitals", id: false, force: :cascade do |t|
-    t.string   "id",         null: false
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+  enable_extension "pgcrypto"
+
+  create_table "hospitals", id: :uuid, default: "gen_random_uuid()", force: :cascade do |t|
     t.string   "name"
     t.string   "location"
     t.string   "level"
@@ -22,8 +25,6 @@ ActiveRecord::Schema.define(version: 20151115225939) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
-  add_index "hospitals", ["id"], name: "index_hospitals_on_id", unique: true
 
   create_table "med_tests", force: :cascade do |t|
     t.string   "record_id"
@@ -40,8 +41,7 @@ ActiveRecord::Schema.define(version: 20151115225939) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "patients", id: false, force: :cascade do |t|
-    t.string   "id",                  null: false
+  create_table "patients", id: :uuid, default: "gen_random_uuid()", force: :cascade do |t|
     t.string   "name"
     t.string   "gender"
     t.date     "date_of_birth"
@@ -53,10 +53,7 @@ ActiveRecord::Schema.define(version: 20151115225939) do
     t.datetime "updated_at",          null: false
   end
 
-  add_index "patients", ["id"], name: "index_patients_on_id", unique: true
-
-  create_table "records", id: false, force: :cascade do |t|
-    t.string   "id",             null: false
+  create_table "records", id: :uuid, default: "gen_random_uuid()", force: :cascade do |t|
     t.string   "patient_id",     null: false
     t.string   "hospital_id",    null: false
     t.string   "staff_id",       null: false
@@ -72,10 +69,7 @@ ActiveRecord::Schema.define(version: 20151115225939) do
     t.datetime "updated_at",     null: false
   end
 
-  add_index "records", ["id"], name: "index_records_on_id", unique: true
-
-  create_table "staffs", id: false, force: :cascade do |t|
-    t.string   "id",         null: false
+  create_table "staffs", id: :uuid, default: "gen_random_uuid()", force: :cascade do |t|
     t.string   "name"
     t.string   "role"
     t.string   "address"
@@ -83,7 +77,5 @@ ActiveRecord::Schema.define(version: 20151115225939) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
-  add_index "staffs", ["id"], name: "index_staffs_on_id", unique: true
 
 end

@@ -1,7 +1,6 @@
 class CreateHospitals < ActiveRecord::Migration
     def change
-        create_table :hospitals, id:false do |t|
-            t.string :id, null:false
+        create_table :hospitals, id: :uuid, default: "gen_random_uuid()", force: true do |t|
             t.string :name
             t.string :location
             t.string :level
@@ -9,6 +8,5 @@ class CreateHospitals < ActiveRecord::Migration
 
             t.timestamps null: false
         end
-        add_index :hospitals, :id, unique: true
     end
 end
