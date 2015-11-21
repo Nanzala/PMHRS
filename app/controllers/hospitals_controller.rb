@@ -19,4 +19,7 @@ class HospitalsController < ApplicationController
   									 :address)
   end
 
+  def show
+  end
+
 end
