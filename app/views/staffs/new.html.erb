@@ -1,10 +1,21 @@
 <h1> Register hospital staff</h1>
 
-<%= form_for Staff.new do |f| %>
+<%= form_for(@staff) do |f| %>
+<% if @staff.errors.any? %>
+ <div id="error_explanation">
+   <h3><%= pluralize(@staff.errors.count, "error") %> found </h3>
+   <ul>
+     <% @staff.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+     <% end %>
+   </ul>
+ </div>
+<% end %>
 
+<p>
     Staff Names:        <%= f.text_field :name %><br />
     Staff Role:         <%= f.text_field :role %><br />
     Staff Address:      <%= f.text_field :address %><br />
     Staff Phone Number: <%= f.text_field :phone %><br />
-        <%= f.submit 'Register Staff' %>
+</p>      <%= f.submit  %>
 <% end %>
