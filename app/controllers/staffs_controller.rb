@@ -6,8 +6,11 @@ class StaffsController < ApplicationController
   def create
     @staff = Staff.new(staff_params)
 
-      unless @staff.save
-        render 'show'
+      if @staff.save
+        flash[:notice] = "Staff Registered Successfully"
+        redirect_to @staff
+      else
+        render 'new'
       end
   end
 
@@ -21,6 +24,7 @@ class StaffsController < ApplicationController
   end 
  
   def show
+    @staff = Staff.find(params[:id])
   end
     
 end

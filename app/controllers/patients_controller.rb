@@ -9,6 +9,9 @@ class PatientsController < ApplicationController
     if @patient.save
       flash[:notice] = "Patient registered successfully"
       redirect_to @patient
+    else
+      flash.now[:alert] = "Error! Patient not registered"
+      render 'new'
     end
   end
 
