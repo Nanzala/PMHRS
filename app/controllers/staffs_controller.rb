@@ -11,6 +11,7 @@ class StaffsController < ApplicationController
         redirect_to @staff
       else
         render 'new'
+
       end
   end
 

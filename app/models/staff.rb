@@ -6,6 +6,6 @@ class Staff < ActiveRecord::Base
   validates  :address, presence: true
   validates  :role, presence: true
 
-  belongs_to :records
-    
+  has_many   :records
+
 end
