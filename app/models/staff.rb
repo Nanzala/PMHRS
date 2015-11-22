@@ -7,5 +7,5 @@ class Staff < ActiveRecord::Base
   validates  :role, presence: true
 
   has_many   :records
-  
+
 end

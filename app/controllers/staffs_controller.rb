@@ -12,6 +12,7 @@ class StaffsController < ApplicationController
       else
         flash.now[:alert] = "Error! Staff not registered"
         render 'new'
+
       end
   end
 

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
- 
+
   get 'hospitals/new'
   get 'staffs/new'
   get 'patients/new'
@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   resources :hospitals
   resources :staffs
   resources :patients
+
 end

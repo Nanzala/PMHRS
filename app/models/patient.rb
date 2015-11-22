@@ -10,4 +10,5 @@ class Patient < ActiveRecord::Base
               length: {within: 10..12 }
 
     has_many :records
+
 end
