@@ -1,8 +1,19 @@
 Rails.application.routes.draw do
 
-    devise_for :admins, :controllers => { registrations: 'admins/registrations' }
+    root 'staffs#new'
 
-    # devise_for :admins, controllers: { sessions: "admin/sessions" }
+    devise_for :admin, 
+        :controllers => { 
+        registrations: 'admins/registrations'
+    },
+    path: "system", path_names: { 
+        sign_in: 'login', 
+        sign_out: 'logout', 
+        confirmation: 'verification', 
+        unlock: 'unblock', 
+        registration: 'register', 
+        sign_up: 'signup'
+    } 
 
     get 'hospitals/new'
     get 'staffs/new'
