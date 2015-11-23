@@ -1,0 +1,31 @@
+<h1>Register Patient</h1>
+
+<%= form_for(@patient) do |f| %>
+<% if @patient.errors.any? %>
+ <div id="error_explanation">
+   <h3><%= pluralize(@patient.errors.count, "error") %> found</h3>
+   <ul>
+     <% @patient.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+     <% end %>
+   </ul>
+ </div>
+<% end %>
+
+<p>   
+    <%= f.label :name, 'Patient Name' %>
+    <%= f.text_field :name %><br />
+    <%= f.label :gender %>
+    <%= f.text_field :gender %><br />
+    <%= f.label :date_of_birth %>
+    <%= f.text_field :date_of_birth %><br />
+    <%= f.label :phone, 'Phone Number' %>
+    <%= f.text_field :phone %><br />
+    <%= f.label :email, 'Email Address' %>
+    <%= f.text_field :email %><br />
+    <%= f.label :next_of_kin %>
+    <%= f.text_field :next_of_kin %><br />
+    <%= f.label :next_of_kin_contact %>
+    <%= f.text_field :next_of_kin_contact %><br />
+</p><%= f.submit  %>
+<% end %>
