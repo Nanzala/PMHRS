@@ -13,7 +13,7 @@ default: &default
 development:
     <<: *default
     database: pmhrs_dev
-    username: postgres
+    username: <%= ENV['PG_DATABASE_USERNAME'] %>
     password: <%= ENV['PG_DATABASE_PASSWORD'] %>
 
 # Warning: The database defined as "test" will be erased and
@@ -22,7 +22,7 @@ development:
 test:
     <<: *default
     database: pmhrs_test
-    username: postgres
+    username: <%= ENV['PG_DATABASE_USERNAME'] %>
     password: <%= ENV['PG_DATABASE_PASSWORD'] %>
 
 production:

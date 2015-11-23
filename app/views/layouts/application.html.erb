@@ -1,18 +1,25 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Pmhrs</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+    <head>
+        <title>Pmhrs</title>
+        <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+        <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+        <%= csrf_meta_tags %>
+    </head>
+    <body>
 
-<% flash.each do |key, message| %>
-  <div><%= message %></div>
-<% end %>
+        <% if notice %>
+            <p class="alert alert-success"><%= notice %></p>
+        <% end %>
+        <% if alert %>
+            <p class="alert alert-danger"><%= alert %></p>
+        <% end %>
 
-<%= yield %>
+        <% flash.each do |key, message| %>
+            <div><%= message %></div>
+        <% end %>
 
-</body>
+        <%= yield %>
+
+    </body>
 </html>
