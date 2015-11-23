@@ -5,29 +5,34 @@
         <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
         <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
         <%= csrf_meta_tags %>
-<%= render 'layouts/shim' %>
+        <%= render 'layouts/shim' %>
     </head>
     <body>
-<%= render 'layouts/header' %>
-        <div class="container">
+        <%= render 'layouts/header' %>
 
-        <% if notice %>
-            <p class="alert alert-success"><%= notice %></p>
-        <% end %>
-        <% if alert %>
-            <p class="alert alert-danger"><%= alert %></p>
-        <% end %>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-3 col-md-2 sidebar">
+                    <%=  render 'admins/side_bar'  %>
+                </div>
 
-        <% flash.each do |key, message| %>
-            <div><%= message %></div>
-        <% end %>
+                <div class="col-sm-9 col-sm-set-3 col-md-10 col-md-set-2">
 
-        <%= yield %>
-</div>
-<%= render 'layouts/footer' %>
+                    <% if notice %>
+                        <p class="alert alert-success"><%= notice %></p>
+                    <% end %>
+                    <% if alert %>
+                        <p class="alert alert-danger"><%= alert %></p>
+                    <% end %>
 
+                    <% flash.each do |key, message| %>
+                        <div><%= message %></div>
+                    <% end %>
 
-
-
+                    <%= yield %>
+                </div>
+            </div>
+        </div>
+        <%= render 'layouts/footer' %>
     </body>
 </html>

@@ -1,5 +1,5 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
-    <div class="container">
+    <div class="container-fluid">
         <%= link_to "PMHRS", root_path, id: 'logo' %>
 
         <nav>
@@ -7,23 +7,19 @@
 
                 <li><%= link_to 'Home',root_path %></li>
 
-                <%# <%  if logged_in?  %1> %>
-                    <li><%=  link_to 'Sys Admin', '#'  %></li>
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" href="#" data-toggle="dropdown">Account <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li><%=  link_to 'Profile', '#' %></li>
-                            <li><%=  link_to 'Settings', '#' %></li>
-                            <li class="divider"</li>
-                            <li><%=  link_to 'Log out', destroy_admin_session_path, method: 'delete' %></li>
-                        </ul>
-                    </li>
+                <li><%=  link_to 'Sys Admin', '#'  %></li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" href="#" data-toggle="dropdown">Account <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><%=  link_to 'Profile', '#' %></li>
+                        <li><%=  link_to 'Settings', '#' %></li>
+                        <li class="divider"></li>
+                        <li><%=  link_to 'Log out', destroy_admin_session_path, method: 'delete' %></li>
+                    </ul>
+                </li>
 
-                    <%# <%  else  %1> %>
-                        <%# <li><%= link_to "Log In", login_path %1></li> %>
-                        <%# <%  end  %1> %>
-                </ul>
-            </nav>
-        </div>
-    </header>
+            </ul>
+        </nav>
+    </div>
+</header>
 

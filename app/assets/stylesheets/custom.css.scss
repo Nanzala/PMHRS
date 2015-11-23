@@ -9,7 +9,6 @@ $gray-medium-light: #eaeaea;
 /* universal */
 
 body {
-    padding-top: 60px;
 }
 
 section {
@@ -75,8 +74,8 @@ p {
 /* footer */
 
 footer {
-    margin-top: 45px;
-    padding-top: 5px;
+    // margin-top: 45px;
+    padding-top: 10px;
     border-top: 1px solid $gray-medium-light;
     color: $gray-light;
     a {
