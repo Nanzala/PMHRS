@@ -1,8 +1,16 @@
 <h1>Register Your Hospital</h1>
 
+<% unless @hospital.errors.empty? %>
+	<h3> <%= pluralize(@hospital.errors.count, "error") %> </h3>
+	<ul> <% @hospital.errors.full_messages.each do |msg| %>
+		<li> <%=msg%> </li>
+		<% end %>
+	</ul>
+<% end %>
+
+<h3> Give Hospital Details </h3>
 <%= form_for Hospital.new do |h| %>
 	
-	Hospital ID: <%= h.text_field :id %><br />
 	Name:        <%= h.text_field :name %><br />
 	Location: 	 <%= h.text_field :location %><br />
 	Level: 		 <%= h.text_field :level %><br />
