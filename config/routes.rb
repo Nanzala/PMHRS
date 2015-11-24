@@ -18,10 +18,14 @@ Rails.application.routes.draw do
     get 'hospitals/new'
     get 'staffs/new'
     get 'patients/new'
+    get 'records/new'
     get 'staffs/show'
+    get 'hospitals/show'
+    get 'records/show'
 
     resources :hospitals
     resources :staffs
     resources :patients
+    resources :records
 
 end

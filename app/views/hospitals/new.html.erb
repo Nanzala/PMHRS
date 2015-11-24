@@ -10,11 +10,9 @@
 
 <h3> Give Hospital Details </h3>
 <%= form_for Hospital.new do |h| %>
-	
 	Name:        <%= h.text_field :name %><br />
 	Location: 	 <%= h.text_field :location %><br />
 	Level: 		 <%= h.text_field :level %><br />
 	Address: 	 <%= h.text_field :address %><br />
 	<%= h.submit 'Submit Hospital' %>
-
 <% end %>
