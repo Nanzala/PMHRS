@@ -9,17 +9,20 @@ Rails.application.routes.draw do
     path: "system", path_names: { 
         sign_in: 'login', 
         sign_out: 'logout', 
-        confirmation: 'verification', 
+        confirmation: 'verify', 
         unlock: 'unblock', 
         registration: 'register', 
         sign_up: 'signup'
     } 
 
     devise_for :staffs, 
+        :controllers => { 
+        registrations: 'staffs/registrations'
+    },
     path: "app", path_names: { 
         sign_in: 'login', 
         sign_out: 'logout', 
-        confirmation: 'verification', 
+        confirmation: 'verify', 
         unlock: 'unblock', 
         registration: 'register', 
         sign_up: 'signup'

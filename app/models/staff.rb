@@ -5,6 +5,10 @@ class Staff < ActiveRecord::Base
         :recoverable, :rememberable, :trackable, :validatable,
         :timeoutable
 
+
+    attr_encrypted :ssn, :key => Rails.application.secrets.encryption_key
+
+    #
     # validates  :name, presence: true
     # validates  :phone, presence: true, 
     #     length: { within: 10..22 }
