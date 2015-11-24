@@ -16,11 +16,11 @@ class HospitalsController < ApplicationController
   end
 
   def show
-    @record = Record.find(params[:id])
+    @hospital = Record.find(params[:id])
   end
 
   def edit
-    @record = Record.find(params[:id])
+    @hospital = Record.find(params[:id])
     render 'new'
   end
 
