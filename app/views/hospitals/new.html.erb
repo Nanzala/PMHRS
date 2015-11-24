@@ -5,7 +5,7 @@
   <h3><%= pluralize(@hospital.errors.count, "error") %> found</h3>
   <ul>
     <% @hospital.errors.full_messages.each do |msg| %>
-     <li><%=msg%></li>
+    <li><%=msg%></li>
     <% end %>
   </ul>
 </div>
@@ -13,13 +13,15 @@
 
 <h3> Give Hospital Details </h3>
 <%= form_for Hospital.new do |h| %>
-<p><%= h.label :name %>
-   <%= h.text_field :name %><br />
-   <%= h.label :location %>
-   <%= h.text_field :location %><br />
-   <%= h.label :level %>
-   <%= h.text_field :level %><br />
-   <%= h.label :address %>
-   <%= h.text_field :address %><br />
-</p><%= h.submit 'Submit Hospital', :class => 'btn btn-primary btn-large'%>
+<p>
+  <%= h.label :name %>
+  <%= h.text_field :name %><br />
+  <%= h.label :location %>
+  <%= h.text_field :location %><br />
+  <%= h.label :level %>
+  <%= h.text_field :level %><br />
+  <%= h.label :address %>
+  <%= h.text_field :address %><br />
+</p>
+  <%= h.submit 'Submit Hospital', :class => 'btn btn-primary btn-large'%>
 <% end %>
