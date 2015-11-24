@@ -1,6 +1,7 @@
 class Patient < ActiveRecord::Base
 
     validates :name, presence:true
+    validates :ssn, presence:true
     validates :gender, presence:true
     validates :date_of_birth, presence:true
     validates :phone, presence:true, 

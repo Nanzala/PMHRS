@@ -1,0 +1,24 @@
+// Place all the styles related to the app controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+$color_thunderbird_approx: #d9230f;
+
+#custom-search-input {
+    margin: 0;
+    margin-top: 10px;
+    padding: 0;
+}
+
+.well{
+    margin: 20px;
+    h2{
+        margin-top: 10px;
+        margin-bottom: 10px;
+    } 
+}
+
+#ssn-search{
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
