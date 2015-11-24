@@ -11,6 +11,7 @@ class HospitalsController < ApplicationController
       flash[:notice] = "Hospital Registered Successfully"
       redirect_to @hospital
   else
+    flash.now[:alert] = "Hospital not registered"
     render 'new'
   end
 
