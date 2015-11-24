@@ -6,14 +6,13 @@ class StaffsController < ApplicationController
   def create
     @staff = Staff.new(staff_params)
 
-      if @staff.save
-        flash[:notice] = "Staff Registered Successfully"
-        redirect_to @staff
-      else
-        flash.now[:alert] = "Error! Staff not registered"
-        render 'new'
-
-      end
+    if @staff.save
+      flash[:notice] = "Staff Registered Successfully"
+      redirect_to @staff
+    else
+      flash.now[:alert] = "Error! Staff not registered"
+      render 'new'
+    end
   end
 
   def show
@@ -46,5 +45,4 @@ class StaffsController < ApplicationController
      :phone
     )
   end 
-    
 end

@@ -1,18 +1,29 @@
 <h1>Register Your Hospital</h1>
 
 <% unless @hospital.errors.empty? %>
-	<h3> <%= pluralize(@hospital.errors.count, "error") %> </h3>
-	<ul> <% @hospital.errors.full_messages.each do |msg| %>
-		<li> <%=msg%> </li>
-		<% end %>
-	</ul>
+<div id="error_explanation">
+  <h3><%= pluralize(@hospital.errors.count, "error") %> found</h3>
+  <ul>
+    <% @hospital.errors.full_messages.each do |msg| %>
+    <li><%=msg%></li>
+    <% end %>
+  </ul>
+</div>
 <% end %>
 
 <h3> Give Hospital Details </h3>
 <%= form_for Hospital.new do |h| %>
-	Name:        <%= h.text_field :name %><br />
-	Location: 	 <%= h.text_field :location %><br />
-	Level: 		 <%= h.text_field :level %><br />
-	Address: 	 <%= h.text_field :address %><br />
-	<%= h.submit 'Submit Hospital' %>
+
+<p>
+  <%= h.label :name %>
+  <%= h.text_field :name %><br />
+  <%= h.label :location %>
+  <%= h.text_field :location %><br />
+  <%= h.label :level %>
+  <%= h.text_field :level %><br />
+  <%= h.label :address %>
+  <%= h.text_field :address %><br />
+</p>
+  <%= h.submit 'Submit Hospital', :class => 'btn btn-primary btn-large'%>
+
 <% end %>

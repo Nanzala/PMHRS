@@ -28,16 +28,17 @@ class PatientsController < ApplicationController
     @patient = Patient.find(params[:id])
 
     if @patient.update(patient_params)
-     flash[:notice] = "Patient updated successfully"
-     redirect_to @patient
-   else
-     flash.now[:alert] = "Patient not updated"
-     render 'new'
-   end  
+      flash[:notice] = "Patient updated successfully"
+      redirect_to @patient
+    else
+      flash.now[:alert] = "Patient not updated"
+      render 'new'
+    end  
   end
 
+  private
   def patient_params
-   params.require(:patient).permit(
+    params.require(:patient).permit(
     :name,
     :gender,
     :date_of_birth,

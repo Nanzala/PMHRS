@@ -1,26 +1,26 @@
 class HospitalsController < ApplicationController
-  
   def new
-	 @hospital = Hospital.new
+	  @hospital = Hospital.new
   end
 
   def create
-	 @hospital = Hospital.new(hospital_params)
+	  @hospital = Hospital.new(hospital_params)
 	
     if @hospital.save
       flash[:notice] = "Hospital Registered Successfully"
       redirect_to @hospital
     else
-    render 'new'
+      flash.now[:alert] = "Hospital not registered"
+      render 'new'
     end
   end
 
   def show
-    @hospital = Hospital.find(params[:id])
+    @record = Record.find(params[:id])
   end
 
   def edit
-    @hospital = Hospital.find(params[:id])
+    @record = Record.find(params[:id])
     render 'new'
   end
 
@@ -37,11 +37,12 @@ class HospitalsController < ApplicationController
   end
 
   private
-  def hospital_params
-    params.require(:hospital).permit(:name,
-                                     :location,
-                                     :level,
-                                     :address)
+   def hospital_params
+    params.require(:hospital).permit(
+    :name,
+    :location,
+    :level,
+    :address
+    )
   end
-
 end
