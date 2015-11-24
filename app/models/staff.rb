@@ -1,11 +1,16 @@
 class Staff < ActiveRecord::Base
+    # Include default devise modules. Others available are:
+    #  and :omniauthable, :confirmable, :lockable, 
+    devise :database_authenticatable, :registerable,
+        :recoverable, :rememberable, :trackable, :validatable,
+        :timeoutable
 
-  validates  :name, presence: true
-  validates  :phone, presence: true, 
-             length: { within: 10..12 }
-  validates  :address, presence: true
-  validates  :role, presence: true
+    # validates  :name, presence: true
+    # validates  :phone, presence: true, 
+    #     length: { within: 10..22 }
+    # validates  :address, presence: true
+    # validates  :role, presence: true
 
-  has_many   :records
+    belongs_to :records
 
 end
