@@ -1,7 +1,7 @@
 <%= render :layout => 'layouts/default' do %>
-    <h1>Register Patient</h1>
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-6 col-md-offset-3 well">
+            <h1>Register Patient</h1>
             <%= form_for @patient, :html => {class: "form-horizontal"} do |f| %>
                 <% if @patient.errors.any? %>
                     <div id="error_explanation">
@@ -14,64 +14,60 @@
                     </div>
                 <% end %>
                 <div class="form-group">
-                    <%= f.label :ssn, 'Patient SSN', :class => "col-sm-2 control-label" %>
-                    <div class="col-sm-10">
+                    <%= f.label :ssn, 'Patient SSN', :class => "col-sm-4 control-label" %>
+                    <div class="col-sm-8">
                         <%= f.text_field :ssn, :class => "form-control" %>
                     </div>
                 </div>
-
                 <div class="form-group">
-                    <%= f.label :name, 'Patient Name', :class => "col-sm-2 control-label" %>
-                    <div class="col-sm-10">
+                    <%= f.label :name, 'Patient Name', :class => "col-sm-4 control-label" %>
+                    <div class="col-sm-8">
                         <%= f.text_field :name, :class => "form-control" %>
                     </div>
                 </div>
-
                 <div class="form-group">
-                    <%= f.label :gender , :class => "col-sm-2 control-label" %>
-                    <div class="col-sm-10">
+                    <%= f.label :gender , :class => "col-sm-4 control-label" %>
+                    <div class="col-sm-8">
                         <%= f.text_field :gender, :class => "form-control" %>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <%= f.label :date_of_birth, :class => "col-sm-2 control-label"  %>
-                    <div class="col-sm-10">
+                    <%= f.label :date_of_birth, :class => "col-sm-4 control-label"  %>
+                    <div class="col-sm-8">
                         <%= f.date_field :date_of_birth, :class => "form-control" %>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <%= f.label :phone, 'Phone Number', :class => "col-sm-2 control-label"  %>
-                    <div class="col-sm-10">
+                    <%= f.label :phone, 'Phone Number', :class => "col-sm-4 control-label"  %>
+                    <div class="col-sm-8">
                         <%= f.text_field :phone, :class => "form-control" %>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <%= f.label :email, 'Email Address', :class => "col-sm-2 control-label"  %>
-                    <div class="col-sm-10">
+                    <%= f.label :email, 'Email Address', :class => "col-sm-4 control-label"  %>
+                    <div class="col-sm-8">
                         <%= f.text_field :email, :class => "form-control" %>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <%= f.label :next_of_kin, :class => "col-sm-2 control-label"  %>
-                    <div class="col-sm-10">
+                    <%= f.label :next_of_kin, :class => "col-sm-4 control-label"  %>
+                    <div class="col-sm-8">
                         <%= f.text_field :next_of_kin, :class => "form-control" %>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <%= f.label :next_of_kin_contact, :class => "col-sm-2 control-label"  %>
-                    <div class="col-sm-10">
+                    <%= f.label :next_of_kin_contact, :class => "col-sm-4 control-label"  %>
+                    <div class="col-sm-8">
                         <%= f.text_field :next_of_kin_contact, :class => "form-control" %>
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <%= f.submit :class => 'btn btn-primary btn-large' %>
-                </div>
+                <%= f.submit :class => 'btn btn-primary btn-large' %>
             <% end %>
         </div>
     </div>
