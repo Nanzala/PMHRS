@@ -1,7 +1,16 @@
 <h1> Register hospital staff</h1>
 
 <%= form_for Staff.new do |f| %>
-
+<% if @staff.errors.any? %>
+ <div id=error_explanation>
+   <h3><%= pluralize(@staff.errors.count, "error") %> found</h3>
+   <ul>
+     <% @staff.errors.full_messages.each do |msg| %>
+       <li><%= msg %></li>
+     <% end %>
+   </ul>
+ </div>
+<% end %>
 <p>
 
     Staff Names:        <%= f.text_field :name %><br />
