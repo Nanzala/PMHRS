@@ -1,7 +1,8 @@
 class Patient < ActiveRecord::Base
 
     devise :database_authenticatable, :registerable,
-        :recoverable, :rememberable, :trackable, :validatable
+        :recoverable, :rememberable, :trackable, :validatable,
+        :confirmable, :lockable, :timeoutable
 
     # attr_encrypted :ssn, :key => Rails.application.secrets.encryption_key
 
