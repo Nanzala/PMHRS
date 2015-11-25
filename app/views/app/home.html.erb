@@ -1,0 +1,21 @@
+<%=  render :layout => 'layouts/default' do %>
+    <div class="col-md-6">
+        <div class="well">
+            <h2>Patient Social Security Number</h2>
+            <div id="ssn-search" class="input-group">
+                <input type="text" class="form-control" placeholder="SSN Number">
+                <span class="input-group-btn">
+                    <button class="btn btn-primary" type="button">Go!</button>
+                </span>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <a href="<%= new_patient_url %>">
+                        <button class="btn btn-primary">Create New Patient</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<%  end  %>
