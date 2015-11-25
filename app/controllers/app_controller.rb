@@ -8,4 +8,9 @@ class AppController < ApplicationController
         @patient = Patient.find_by_ssn params[:ssn] 
         redirect_to @patient
     end
+
+    def reset
+        reset_session
+        render nothing: true
+    end
 end
