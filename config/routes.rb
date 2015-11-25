@@ -33,6 +33,8 @@ Rails.application.routes.draw do
     get 'patients/new'
     get 'staffs/show'
 
+    post 'search' => 'app#search_ssn'
+
     resources :hospitals
     resources :staffs
     resources :patients
