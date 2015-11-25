@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151124214639) do
+ActiveRecord::Schema.define(version: 20151124181634) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -126,10 +126,6 @@ ActiveRecord::Schema.define(version: 20151124214639) do
     t.datetime "locked_at"
   end
 
-  add_index "staffs", ["confirmation_token"], name: "index_staffs_on_confirmation_token", unique: true, using: :btree
-  add_index "staffs", ["email"], name: "index_staffs_on_email", unique: true, using: :btree
-  add_index "staffs", ["encrypted_ssn"], name: "index_staffs_on_encrypted_ssn", using: :btree
-  add_index "staffs", ["reset_password_token"], name: "index_staffs_on_reset_password_token", unique: true, using: :btree
-  add_index "staffs", ["unlock_token"], name: "index_staffs_on_unlock_token", unique: true, using: :btree
+  add_index "staffs", ["ssn"], name: "index_staffs_on_ssn", using: :btree
 
 end

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-    root 'staffs#new'
+    root 'app#home'
 
     devise_for :admin, 
         :controllers => { 

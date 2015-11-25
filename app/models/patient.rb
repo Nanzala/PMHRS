@@ -5,6 +5,7 @@ class Patient < ActiveRecord::Base
         :confirmable, :lockable, :timeoutable
 
     # attr_encrypted :ssn, :key => Rails.application.secrets.encryption_key
+    attr_encrypted :ssn, :key => Rails.application.secrets.encryption_key
 
     validates :name, presence:true
     validates :ssn, presence:true
@@ -17,4 +18,5 @@ class Patient < ActiveRecord::Base
         length: {within: 10..22 }
 
     has_many :records
+
 end
