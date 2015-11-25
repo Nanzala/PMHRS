@@ -1,13 +1,15 @@
 <%=  render :layout => 'layouts/default' do %>
     <div class="col-md-6">
         <div class="well">
-            <h2>Patient Social Security Number</h2>
-            <div id="ssn-search" class="input-group">
-                <input type="text" class="form-control" placeholder="SSN Number">
-                <span class="input-group-btn">
-                    <button class="btn btn-primary" type="button">Go!</button>
-                </span>
-            </div>
+            <%= form_tag search_path do %>
+                <%= label_tag(:ssn, "Patient Social Security Number:") %>
+                <div id="ssn-search" class="input-group">
+                    <%= text_field_tag :ssn, "", class: "form-control", placeholder: "SSN Number" %>
+                    <span class="input-group-btn">
+                        <%= submit_tag "Go!", class:"btn btn-primary" %>
+                    </span>
+                </div>
+            <%  end  %>
             <div class="row">
                 <div class="col-md-6">
                     <a href="<%= new_patient_url %>">
@@ -15,7 +17,7 @@
                     </a>
                 </div>
             </div>
+
         </div>
     </div>
-</div>
 <%  end  %>
