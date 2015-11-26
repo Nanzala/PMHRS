@@ -17,7 +17,8 @@ Rails.application.routes.draw do
 
     devise_for :staffs, 
         :controllers => { 
-        registrations: 'staffs/registrations'
+        registrations: 'staffs/registrations',
+        sessions: 'staffs/sessions'
     },
     path: "app", path_names: { 
         sign_in: 'login', 

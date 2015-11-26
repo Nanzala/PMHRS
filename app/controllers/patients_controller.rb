@@ -1,4 +1,5 @@
 class PatientsController < ApplicationController
+    before_action :authenticate_staff!
     def new
         @patient = Patient.new
     end

@@ -1,7 +1,7 @@
 class AppController < ApplicationController
+    before_action :authenticate_staff!
 
     def home
-
     end
 
     def search_ssn
