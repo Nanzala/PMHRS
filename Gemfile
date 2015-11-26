@@ -15,12 +15,15 @@ gem 'devise'
 gem 'attr_encrypted'
 
 group :development, :test do
-  gem 'byebug'
+    gem 'byebug'
 end
 
 group :development do
-  gem 'web-console', '~> 2.0'
-  gem 'spring'
-  gem 'hirb'
+    gem 'web-console', '~> 2.0'
+    gem 'spring'
+    gem 'hirb'
 end
 
+group :production do
+    gem 'rails_12factor'
+end
