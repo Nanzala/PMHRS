@@ -29,21 +29,13 @@ Rails.application.routes.draw do
         sign_up: 'signup'
     } 
 
-    get 'hospitals/new'
-    get 'staffs/new'
-    get 'patients/new'
-    get 'records/new'
-    get 'staffs/show'
-    get 'hospitals/show'
-    get 'records/show'
-
     get 'reset' => 'app#reset'
 
     post 'search' => 'app#search_ssn'
 
     resources :hospitals
     resources :staffs
-    resources :patients
-    resources :records
-
+    resources :patients do
+        resources :records
+    end
 end

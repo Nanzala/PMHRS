@@ -1,22 +1,23 @@
 <h1> Fill in Patient Records </h1>
 
-<% unless @record.errors.empty? %>
-	<h3> <% pluralize(@record.errors.count, "error") %> </h3>
-	<ul> <% @record.errors.full_messages.each do |msg| %>
-		<li> <%=msg%> </li>
-		<% end %>
-	</ul>
+<% unless @record.errors.empty? -%>
+    <h3> <% pluralize(@record.errors.count, "error") %> </h3>
+    <ul>
+        <% @record.errors.full_messages.each do |msg| %>
+            <li> <%=msg%> </li>
+        <% end -%>
+    </ul>
 <% end %>
 
 <h3> Fill in Record Details </h3>
 <p>
-<%= form_for Record.new do |r| %>
-	Height: 		<%= r.text_field :height %><br />
-	Weight: 		<%= r.text_field :weight %><br />
-	Temperature: 	<%= r.text_field :temperature %><br />
-	Blood Pressure: <%= r.text_field :blood_pressure %><br />
-	Symptoms: 		<%= r.text_field :symptoms %><br />
-	Diagnosis: 		<%= r.text_field :diagnosis %><br />
+    <%= form_for @record, url: {action: "create"} do |r| %>
+        Height: 		<%= r.text_field :height %><br />
+        Weight: 		<%= r.text_field :weight %><br />
+        Temperature: 	<%= r.text_field :temperature %><br />
+        Blood Pressure: <%= r.text_field :blood_pressure %><br />
+        Symptoms: 		<%= r.text_field :symptoms %><br />
+        Diagnosis: 		<%= r.text_field :diagnosis %><br />
 
-	<%= r.submit 'Submit Patient Records' %>
-<% end %>
+        <%= r.submit 'Submit Patient Records' %>
+    <% end %>

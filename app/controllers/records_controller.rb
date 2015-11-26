@@ -2,15 +2,17 @@ class RecordsController < ApplicationController
     before_action :authenticate_staff!
 
     def new
-        @record = Record.new
+        @record = Patient.find_by(params[:id]).records.build
     end
 
     def create
-        @record = Record.new(record_params)
+        @record = Patient.find(params[:patient_id]).records.build(record_params)
+        @record.hospital_id = session[:hospital_id]
+        @record.staff_id = current_staff.id
 
         if @record.save
             flash[:notice] = "Patient Record Registered Successfully"
-            redirect_to @record
+            redirect_to patient_record_path :patient_id => @record.patient_id, :id => @record.id
         else
             render 'new'
         end

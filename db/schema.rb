@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151125215634) do
+ActiveRecord::Schema.define(version: 20151126122732) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -88,7 +88,6 @@ ActiveRecord::Schema.define(version: 20151125215634) do
   add_index "patients", ["encrypted_ssn"], name: "index_patients_on_encrypted_ssn", using: :btree
 
   create_table "records", id: :uuid, default: "gen_random_uuid()", force: :cascade do |t|
-    t.string   "patient_id",     null: false
     t.string   "hospital_id",    null: false
     t.string   "staff_id",       null: false
     t.integer  "height"
@@ -99,7 +98,10 @@ ActiveRecord::Schema.define(version: 20151125215634) do
     t.string   "diagnosis"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.uuid     "patient_id"
   end
+
+  add_index "records", ["patient_id"], name: "index_records_on_patient_id", using: :btree
 
   create_table "staffs", id: :uuid, default: "gen_random_uuid()", force: :cascade do |t|
     t.string   "name"
@@ -129,4 +131,5 @@ ActiveRecord::Schema.define(version: 20151125215634) do
   add_index "staffs", ["reset_password_token"], name: "index_staffs_on_reset_password_token", unique: true, using: :btree
   add_index "staffs", ["unlock_token"], name: "index_staffs_on_unlock_token", unique: true, using: :btree
 
+  add_foreign_key "records", "patients"
 end

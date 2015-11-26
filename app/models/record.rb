@@ -3,8 +3,8 @@ class Record < ActiveRecord::Base
   validates :hospital_id, presence:true
   validates :staff_id,    presence:true
 
-  has_many :patients
-  has_many :hospitals
+  belongs_to :patients
+  belongs_to :hospitals
   has_many :staffs
   has_many :medications
   has_many :med_tests
