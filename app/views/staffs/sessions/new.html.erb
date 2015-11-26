@@ -13,14 +13,14 @@
             <%= label_tag :ref,"", class:"sr-only" %>
             <%= text_field_tag :ref, "", class: "form-control", placeholder: "Hospital Ref",  autofocus: true %>
 
-            <div class="checkbox">
-                <label>
-                    <% if devise_mapping.rememberable? -%>
-                        <%# <%= f.label :remember_me %1> %>
-                        <%= f.check_box :remember_me %>Remember me
-                    <% end -%>
-                </label>
-            </div>
+            <%# <div class="checkbox"> %>
+            <%#     <label> %>
+            <%#         <% if devise_mapping.rememberable? -%> 
+            <%#             <1%# <%= f.label :remember_me %2> %1> %>
+            <%#             <%= f.check_box :remember_me %1>Remember me %>
+            <%#         <% end -%> 
+            <%#     </label> %>
+            <%# </div> %>
             <div class="actions">
                 <%= f.submit "Log in", class:"btn btn-lg btn-primary btn-block" %>
             </div>

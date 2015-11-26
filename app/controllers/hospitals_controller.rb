@@ -1,4 +1,5 @@
 class HospitalsController < ApplicationController
+    before_action :authenticate_admin!
     def new
         @hospital = Hospital.new
     end
