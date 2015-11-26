@@ -2,9 +2,15 @@
 
 <p>
 Hospital name: <%= @hospital.name %><br />
+Ref: <%= @hospital.ref %><br />
 Location:      <%= @hospital.location %><br />
 Level:         <%= @hospital.level %><br />
 Address:       <%= @hospital.address %><br />
 Created:       <%= @hospital.created_at %><br />
 Updated:       <%= @hospital.updated_at %><br />   
 </p> 
+
+<p> <%= link_to "Enter Patient Record", new_record_path %><br />
+    <%= link_to "Edit Record Details", edit_record_path %><br />
+    <%= link_to "List of Patient Records", records_path %>
+</p>

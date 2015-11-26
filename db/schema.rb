@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151123210350) do
+ActiveRecord::Schema.define(version: 20151126122732) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,7 +52,10 @@ ActiveRecord::Schema.define(version: 20151123210350) do
     t.string   "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "ref",        null: false
   end
+
+  add_index "hospitals", ["ref"], name: "index_hospitals_on_ref", using: :btree
 
   create_table "med_tests", force: :cascade do |t|
     t.string   "record_id"
@@ -79,13 +82,12 @@ ActiveRecord::Schema.define(version: 20151123210350) do
     t.string   "next_of_kin_contact"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
-    t.string   "ssn",                 null: false
+    t.string   "encrypted_ssn",       null: false
   end
 
-  add_index "patients", ["ssn"], name: "index_patients_on_ssn", using: :btree
+  add_index "patients", ["encrypted_ssn"], name: "index_patients_on_encrypted_ssn", using: :btree
 
   create_table "records", id: :uuid, default: "gen_random_uuid()", force: :cascade do |t|
-    t.string   "patient_id",     null: false
     t.string   "hospital_id",    null: false
     t.string   "staff_id",       null: false
     t.integer  "height"
@@ -94,19 +96,40 @@ ActiveRecord::Schema.define(version: 20151123210350) do
     t.string   "blood_pressure"
     t.string   "symptoms"
     t.string   "diagnosis"
-    t.string   "medication_id"
-    t.string   "med_test_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.uuid     "patient_id"
   end
+
+  add_index "records", ["patient_id"], name: "index_records_on_patient_id", using: :btree
 
   create_table "staffs", id: :uuid, default: "gen_random_uuid()", force: :cascade do |t|
     t.string   "name"
     t.string   "role"
     t.string   "address"
     t.string   "phone"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.string   "encrypted_ssn",                       null: false
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: ""
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.inet     "current_sign_in_ip"
+    t.inet     "last_sign_in_ip"
+    t.integer  "failed_attempts",        default: 0,  null: false
+    t.string   "unlock_token"
+    t.datetime "locked_at"
   end
 
+  add_index "staffs", ["email"], name: "index_staffs_on_email", unique: true, using: :btree
+  add_index "staffs", ["encrypted_ssn"], name: "index_staffs_on_encrypted_ssn", using: :btree
+  add_index "staffs", ["reset_password_token"], name: "index_staffs_on_reset_password_token", unique: true, using: :btree
+  add_index "staffs", ["unlock_token"], name: "index_staffs_on_unlock_token", unique: true, using: :btree
+
+  add_foreign_key "records", "patients"
 end

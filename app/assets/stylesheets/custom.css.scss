@@ -7,9 +7,12 @@
 $gray-medium-light: #eaeaea;
 
 /* universal */
+/* Sticky footer styles
+-------------------------------------------------- */
 
-body {
-}
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
 
 section {
     overflow: auto;
@@ -21,9 +24,9 @@ textarea {
 
 .center {
     text-align: center;
-    h1 {
-        margin-bottom: 10px;
-    }
+    // h1 {
+        //     margin-bottom: 10px;
+    // }
 }
 
 /* typography */
@@ -36,18 +39,20 @@ h1 {
     font-size: 3em;
     letter-spacing: -2px;
     margin-bottom: 30px;
-    text-align: center;
+    // text-align: center;
 }
 
 h2 {
     font-size: 1.2em;
     letter-spacing: -1px;
     margin-bottom: 30px;
-    text-align: center;
+    // text-align: center;
     font-weight: normal;
     color: $gray-light;
 }
-
+.container {
+    margin-top: 30px;
+}
 p {
     font-size: 1.1em;
     line-height: 1.7em;
@@ -179,3 +184,4 @@ input {
         color: $state-danger-text;
     }
 }
+

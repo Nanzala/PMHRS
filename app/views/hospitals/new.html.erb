@@ -13,6 +13,7 @@
 
 <h3> Give Hospital Details </h3>
 <%= form_for Hospital.new do |h| %>
+
 <p>
   <%= h.label :name %>
   <%= h.text_field :name %><br />
@@ -24,4 +25,5 @@
   <%= h.text_field :address %><br />
 </p>
   <%= h.submit 'Submit Hospital', :class => 'btn btn-primary btn-large'%>
+
 <% end %>

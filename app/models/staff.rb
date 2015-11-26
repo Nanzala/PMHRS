@@ -1,9 +1,12 @@
 class Staff < ActiveRecord::Base
-  validates :name,  presence: true
-  validates :phone, presence: true, 
-                      length: { within: 10..12 }
-  validates :address, presence: true
-  validates :role,    presence: true
 
-  has_many  :records
+    attr_encrypted :ssn, :key => Rails.application.secrets.encryption_key
+
+    # Include default devise modules. Others available are:
+    #  and :omniauthable, :confirmable, :lockable, :rememberable,
+    devise :database_authenticatable, :registerable,
+        :recoverable, :trackable, :validatable,
+        :timeoutable
+    belongs_to :records
+
 end
