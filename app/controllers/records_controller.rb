@@ -3,6 +3,7 @@ class RecordsController < ApplicationController
 
     def new
         @record = Patient.find_by(params[:id]).records.build
+        @patient = Patient.find params[:patient_id]
     end
 
     def create
@@ -23,7 +24,9 @@ class RecordsController < ApplicationController
     end
 
     def edit
-        @record = Record.find(params[:id])
+
+        @patient = Patient.find params[:patient_id]
+               @record = Record.find(params[:id])
         render 'new'
     end
 
