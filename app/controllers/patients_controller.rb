@@ -1,5 +1,7 @@
 class PatientsController < ApplicationController
     before_action :authenticate_staff!
+    before_action :set_hospital_id
+
     def new
         @patient = Patient.new
     end
@@ -18,7 +20,7 @@ class PatientsController < ApplicationController
 
     def show
         @patient = Patient.find(params[:id])
-        @records = @patient.records
+        @records = Record.where("patient_id = ? and id in (select record_id from permissions where hospital_id = ?)",@patient.id , @hospital_id)
     end
 
     def edit
@@ -50,5 +52,9 @@ class PatientsController < ApplicationController
             :next_of_kin,
             :next_of_kin_contact 
         )
+    end
+
+    def set_hospital_id
+    @hospital_id = session[:hospital_id]
     end
 end

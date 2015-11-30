@@ -7,11 +7,11 @@ class RecordsController < ApplicationController
 
     def create
         @record = Patient.find(params[:patient_id]).records.build(record_params)
-        @record.hospital_id = session[:hospital_id]
         @record.staff_id = current_staff.id
-
+       
         if @record.save
             flash[:notice] = "Patient Record Registered Successfully"
+            @permission = Permission.create(record_id: @record.id, hospital_id: session[:hospital_id])
             redirect_to patient_record_path :patient_id => @record.patient_id, :id => @record.id
         else
             render 'new'

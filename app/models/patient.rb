@@ -12,9 +12,10 @@ class Patient < ActiveRecord::Base
     validates :next_of_kin, presence: true
     validates :next_of_kin_contact, presence: true,
         length: {within: 10..12 }
-    validates :parent_ssn, presence: true, if: Proc.new do |p|
-        age(p.date_of_birth) < MINOR_AGE_LIMIT
-    end
+ #   validates :parent_ssn, presence: true 
+#      if: Proc.new do |p| 
+ #       age(p.date_of_birth) < MINOR_AGE_LIMIT 
+  #    end 
 
     has_many :records
 
@@ -33,5 +34,4 @@ class Patient < ActiveRecord::Base
             end
         end
     end
-
 end
