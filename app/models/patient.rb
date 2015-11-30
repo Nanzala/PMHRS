@@ -13,15 +13,15 @@ class Patient < ActiveRecord::Base
     validates :next_of_kin, presence: true
     validates :next_of_kin_contact, presence: true,
         length: {within: 10..22 }
-    validates :parent_ssn, presence: true, if: Proc.new do |p|
+    validates :parent_ssn, presence: true, if: Proc.new { |p|
         age(p.date_of_birth) < MINOR_AGE_LIMIT
-    end
+    }    
 
     has_many :records
 
     def age(birthday)
+        return 0 if birthday == nil
         today = Date.today
-
         if today.month > birthday.month
             today.year - birthday.year
         elsif today.month < birthday.month
