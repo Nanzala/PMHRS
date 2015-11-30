@@ -7,6 +7,6 @@ class Staff < ActiveRecord::Base
     devise :database_authenticatable, :registerable,
         :recoverable, :trackable, :validatable,
         :timeoutable
-    belongs_to :records
+    belongs_to :record
 
 end

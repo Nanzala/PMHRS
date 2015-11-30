@@ -4,5 +4,6 @@ class Hospital < ActiveRecord::Base
   validates :level,    presence: true
   validates :address,  presence: true
 
-  has_many  :records
+  has_many  :permissions
+  has_many  :records, through: :permissions
 end
