@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151126122732) do
+ActiveRecord::Schema.define(version: 20151130082303) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -99,6 +99,7 @@ ActiveRecord::Schema.define(version: 20151126122732) do
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.uuid     "patient_id"
+    t.uuid     "record_id"
   end
 
   add_index "records", ["patient_id"], name: "index_records_on_patient_id", using: :btree
@@ -132,4 +133,5 @@ ActiveRecord::Schema.define(version: 20151126122732) do
   add_index "staffs", ["unlock_token"], name: "index_staffs_on_unlock_token", unique: true, using: :btree
 
   add_foreign_key "records", "patients"
+  add_foreign_key "records", "records"
 end
