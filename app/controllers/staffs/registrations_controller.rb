@@ -17,7 +17,8 @@ class Staffs::RegistrationsController < Devise::RegistrationsController
         new_staff = StaffSignup.find_by token: params[:token]
         resource.email = new_staff.email  
         resource.save
-        new_staff.activated == true
+        new_staff.activated = true
+        new_staff.save
         yield resource if block_given?
         raise_404 'staff nill' if new_staff.nil?
         if resource.persisted?
@@ -36,8 +37,6 @@ class Staffs::RegistrationsController < Devise::RegistrationsController
             respond_with resource
         end
     end
-
-
 
     private
     def after_sign_up_path_for(resource)
