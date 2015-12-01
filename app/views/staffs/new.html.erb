@@ -1,25 +1,29 @@
-<h1> Register hospital staff</h1>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <h1>Create new staff Signup</h1>
 
-<%= form_for Staff.new do |f| %>
-<% if @staff.errors.any? %>
- <div id=error_explanation>
-   <h3><%= pluralize(@staff.errors.count, "error") %> found</h3>
-   <ul>
-     <% @staff.errors.full_messages.each do |msg| %>
-       <li><%= msg %></li>
-     <% end %>
-   </ul>
- </div>
-<% end %>
-<p>
 
-    <%= f.label :name, 'Staff Names' %>
-    <%= f.text_field :name %><br />
-    <%= f.label :role, 'Staff Role' %>
-    <%= f.text_field :role %><br />
-    <%= f.label :address, 'Staff Address' %>
-    <%= f.text_field :address %><br />
-    <%= f.label :phone, 'Staff Phone Number' %>
-    <%= f.text_field :phone %><br />
-</p><%= f.submit :class => 'btn btn-primary btn-large' %>
-<% end %>
+            <%= form_for @staff, url: staffs_path do |f| %>
+                <% if @staff.errors.any? %>
+                    <div id=error_explanation>
+                        <h3><%= pluralize(@staff.errors.count, "error") %> found</h3>
+                        <ul>
+                            <% @staff.errors.full_messages.each do |msg| %>
+                                <li><%= msg %></li>
+                            <% end %>
+                        </ul>
+                    </div>
+                <% end %>
+                <p>
+
+                    <%= f.label :email, 'Staff Email' %>
+                    <%= f.text_field :email %><br />
+                    <%= f.label :valid_until, 'Staff Role' %>
+                    <%= f.date_field :valid_until %><br />
+                </p>
+                <%= f.submit 'Create', :class => 'btn btn-primary btn-large' %>
+            <% end %>
+        </div>
+    </div>
+</div>

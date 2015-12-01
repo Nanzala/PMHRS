@@ -31,10 +31,14 @@ Rails.application.routes.draw do
 
     get 'reset' => 'app#reset'
 
+    get 'system' => 'dashboard#home'
     post 'search' => 'app#search_ssn'
 
     resources :hospitals
+
+    get 'staffs/applications' => 'staffs#staff_applications'
     resources :staffs
+
     resources :patients do
         resources :records
     end

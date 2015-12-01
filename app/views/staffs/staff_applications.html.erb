@@ -1,0 +1,5 @@
+<%= render :layout => 'layouts/default' do  %>
+    <%=  @staffs_signups.each do |staff_signup| %>
+        <%=  staff_signup.email  %><br />
+    <%  end  %>
+<%  end  %>

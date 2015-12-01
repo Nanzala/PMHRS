@@ -1,4 +1,14 @@
 class Staffs::RegistrationsController < Devise::RegistrationsController
+
+    def new
+        validate_signup
+        build_resource({})
+        set_minimum_password_length
+        yield resource if block_given?
+        respond_with self.resource
+    end
+
+
     # POST /resource
     def create
         build_resource(sign_up_params)
@@ -25,12 +35,26 @@ class Staffs::RegistrationsController < Devise::RegistrationsController
 
 
     private
-
     def sign_up_params
         params.require(:staff).permit(:ssn, :email, :password, :password_confirmation)
     end
 
     def account_update_params
         params.require(:staff).permit(:name, :email, :password, :password_confirmation, :current_password)
+    end
+
+    def validate_signup
+        raise_404 if params[:email].nil? && params[:token].nil?
+
+        email = params[:email]
+        token = params[:token]
+
+        new_staff = StaffSignup.find_by email: email
+        raise_404 if new_staff.nil?
+        if token == new_staff.token
+            return
+        else
+            raise_404
+        end
     end
 end
