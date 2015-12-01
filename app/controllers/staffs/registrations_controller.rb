@@ -5,6 +5,7 @@ class Staffs::RegistrationsController < Devise::RegistrationsController
         build_resource({})
         set_minimum_password_length
         yield resource if block_given?
+        self.resource.email = params[:email]
         respond_with self.resource
     end
 
@@ -15,10 +16,13 @@ class Staffs::RegistrationsController < Devise::RegistrationsController
 
         resource.save
         yield resource if block_given?
+        new_staff = StaffSignup.find_by token: params[:token]
+        raise_404 'staff nill' if new_staff.nil?
+        resource.email = new_staff.email  
         if resource.persisted?
             if resource.active_for_authentication?
                 set_flash_message :notice, :signed_up if is_flashing_format?
-                # sign_up(resource_name, resource)
+                sign_up(resource_name, resource)
                 respond_with resource, location: after_sign_up_path_for(resource)
             else
                 set_flash_message :notice, :"signed_up_but_#{resource.inactive_message}" if is_flashing_format?
@@ -36,7 +40,7 @@ class Staffs::RegistrationsController < Devise::RegistrationsController
 
     private
     def sign_up_params
-        params.require(:staff).permit(:ssn, :email, :password, :password_confirmation)
+        params.require(:staff).permit(:ssn, :password, :password_confirmation)
     end
 
     def account_update_params
@@ -51,7 +55,7 @@ class Staffs::RegistrationsController < Devise::RegistrationsController
 
         new_staff = StaffSignup.find_by email: email
         raise_404 if new_staff.nil?
-        if token == new_staff.token
+        if token == new_staff.token && !new_staff.activated
             return
         else
             raise_404

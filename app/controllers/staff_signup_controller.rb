@@ -1,13 +1,12 @@
-class StaffsController < ApplicationController
+class StaffSignupsController < ApplicationController
     before_action :authenticate_admin!
     def new
+        # validate_staff_signup
         @staff = StaffSignup.new   
     end
 
     def create
         @staff = StaffSignup.new(staff_params)
-
-        # @staff.confirmation_token = 
 
         if @staff.save
             flash[:notice] = "Staff Registered Successfully"
@@ -19,16 +18,16 @@ class StaffsController < ApplicationController
     end
 
     def show
-        @staff = Staff.find(params[:id])
+        @staff = StaffSignup.find(params[:id])
     end
 
     def edit
-        @staff = Staff.find(params[:id])
+        @staff = StaffSignup.find(params[:id])
         render 'new'
     end
 
     def update
-        @staff = Staff.find(params[:id])
+        @staff = StaffSignup.find(params[:id])
 
         if @staff.update(staff_params)
             flash[:notice] = "Staff updated successfully"
