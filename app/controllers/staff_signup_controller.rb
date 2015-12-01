@@ -1,7 +1,6 @@
-class StaffSignupsController < ApplicationController
+class StaffSignupController < ApplicationController
     before_action :authenticate_admin!
     def new
-        # validate_staff_signup
         @staff = StaffSignup.new   
     end
 

@@ -3,8 +3,7 @@
         <div class="col-md-4 col-md-offset-4">
             <h1>Create new staff Signup</h1>
 
-
-            <%= form_for @staff, url: staffs_path do |f| %>
+            <%= form_for @staff, url: staff_signup_index_path do |f| %>
                 <% if @staff.errors.any? %>
                     <div id=error_explanation>
                         <h3><%= pluralize(@staff.errors.count, "error") %> found</h3>

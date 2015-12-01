@@ -4,7 +4,8 @@ Rails.application.routes.draw do
 
     devise_for :admin, 
         :controllers => { 
-        registrations: 'admins/registrations'
+        registrations: 'admins/registrations',
+        sessions: 'admins/sessions'
     },
     path: "system", path_names: { 
         sign_in: 'login', 
@@ -33,8 +34,8 @@ Rails.application.routes.draw do
     get 'system' => 'dashboard#home'
 
     resources :hospitals
-    get 'staffs/applications' => 'staffs#staff_applications'
-    resources :staff_signups
+    get 'staffs/applications' => 'staff_signup#staff_applications'
+    resources :staff_signup # only: [:new, :create, :show, :edit, :update, :destroy] 
 
     post 'search' => 'app#search_ssn'
     resources :patients do

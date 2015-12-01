@@ -14,15 +14,16 @@ class Staffs::RegistrationsController < Devise::RegistrationsController
     def create
         build_resource(sign_up_params)
 
-        resource.save
-        yield resource if block_given?
         new_staff = StaffSignup.find_by token: params[:token]
-        raise_404 'staff nill' if new_staff.nil?
         resource.email = new_staff.email  
+        resource.save
+        new_staff.activated == true
+        yield resource if block_given?
+        raise_404 'staff nill' if new_staff.nil?
         if resource.persisted?
             if resource.active_for_authentication?
                 set_flash_message :notice, :signed_up if is_flashing_format?
-                sign_up(resource_name, resource)
+                # sign_up(resource_name, resource)
                 respond_with resource, location: after_sign_up_path_for(resource)
             else
                 set_flash_message :notice, :"signed_up_but_#{resource.inactive_message}" if is_flashing_format?
@@ -39,6 +40,10 @@ class Staffs::RegistrationsController < Devise::RegistrationsController
 
 
     private
+    def after_sign_up_path_for(resource)
+        system_path
+    end
+
     def sign_up_params
         params.require(:staff).permit(:ssn, :password, :password_confirmation)
     end
@@ -51,14 +56,14 @@ class Staffs::RegistrationsController < Devise::RegistrationsController
         raise_404 if params[:email].nil? && params[:token].nil?
 
         email = params[:email]
-        token = params[:token]
+        @token = params[:token]
 
         new_staff = StaffSignup.find_by email: email
         raise_404 if new_staff.nil?
-        if token == new_staff.token && !new_staff.activated
+        if @token == new_staff.token && !new_staff.activated
             return
         else
-            raise_404
+            raise_404 'Invalid token or token has expired'
         end
     end
 end
