@@ -15,12 +15,15 @@ class Staffs::RegistrationsController < Devise::RegistrationsController
         build_resource(sign_up_params)
 
         new_staff = StaffSignup.find_by token: params[:token]
+        raise_404 'staff nill' if new_staff.nil?
+
         resource.email = new_staff.email  
         resource.save
+
         new_staff.activated = true
         new_staff.save
+
         yield resource if block_given?
-        raise_404 'staff nill' if new_staff.nil?
         if resource.persisted?
             if resource.active_for_authentication?
                 set_flash_message :notice, :signed_up if is_flashing_format?
