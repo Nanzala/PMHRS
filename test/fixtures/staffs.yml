@@ -1,15 +1,2 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  id: MyString
-  name: MyString
-  role: MyString
-  address: MyString
-  phone: MyString
-
-two:
-  id: MyString
-  name: MyString
-  role: MyString
-  address: MyString
-  phone: MyString

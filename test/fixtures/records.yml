@@ -1,25 +1,2 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  id: MyString
-  patient_id: MyString
-  hospital_id: MyString
-  staff_id: MyString
-  height: 1
-  weight: 
-  temperature: 
-  blood_pressure: MyString
-  symptoms: MyString
-  diagnosis: MyString
-
-two:
-  id: MyString
-  patient_id: MyString
-  hospital_id: MyString
-  staff_id: MyString
-  height: 1
-  weight: 
-  temperature: 
-  blood_pressure: MyString
-  symptoms: MyString
-  diagnosis: MyString
