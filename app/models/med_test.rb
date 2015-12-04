@@ -1,3 +1,6 @@
 class MedTest < ActiveRecord::Base
-    belongs_to :records
+  validates  :test,   presence:true
+  validates  :result, presence:true
+
+  belongs_to :records
 end

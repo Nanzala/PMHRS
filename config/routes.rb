@@ -17,7 +17,8 @@ Rails.application.routes.draw do
 
     devise_for :staffs, 
         :controllers => { 
-        registrations: 'staffs/registrations'
+        registrations: 'staffs/registrations',
+        sessions: 'staffs/sessions'
     },
     path: "app", path_names: { 
         sign_in: 'login', 
@@ -28,13 +29,14 @@ Rails.application.routes.draw do
         sign_up: 'signup'
     } 
 
-    get 'hospitals/new'
-    get 'staffs/new'
-    get 'patients/new'
-    get 'staffs/show'
+    get 'reset' => 'app#reset'
+
+    post 'search' => 'app#search_ssn'
 
     resources :hospitals
     resources :staffs
-    resources :patients
-
+    resources :patients do
+        resources :records
+    resources :medications
+    end
 end

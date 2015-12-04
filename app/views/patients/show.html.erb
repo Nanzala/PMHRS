@@ -1,16 +1,38 @@
-<h3> Patient Record </h3>
-<p> 
-    Names  :<%= @patient.name %><br />
-    SSN  :<%= @patient.ssn %><br />
-    SSN-enc  :<%= @patient.encrypted_ssn %><br />
-    Gender :<%= @patient.gender %><br />
-    Date of Birth :<%= @patient.date_of_birth %><br />
-    Phone Number :<%= @patient.phone %><br />
-    Email Address :<%= @patient.email %><br />
-    Next of Kin :<%= @patient.next_of_kin %><br />
-    Next of Kin Contact :<%= @patient.next_of_kin_contact %>
-</p>
-<p> <%= link_to "Register Patient", new_patient_path %><br />
-    <%= link_to "Edit Patient Details", edit_patient_path %><br />
-    <%= link_to "List of Patients", patients_path %>
-</p>
+<%=  render :layout => 'layouts/default' do  %>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">Patient Details</div>
+                <div class="panel-body">
+                    <p>
+                        Names  :<%= @patient.name %><br />
+                        SSN  :<%= @patient.ssn %><br />
+                        Gender :<%= @patient.gender %><br />
+                        Date of Birth :<%= @patient.date_of_birth %><br />
+                        Phone Number :<%= @patient.phone %><br />
+                        Email Address :<%= @patient.email %><br />
+                        Next of Kin :<%= @patient.next_of_kin %><br />
+                        Next of Kin Contact :<%= @patient.next_of_kin_contact %><br />
+                    </p>
+                    <p>
+                        <%= link_to "Add Record", new_patient_record_path(params[:id]) %><br />
+                        <%= link_to "Edit Patient Details", edit_patient_path %><br />
+                        <%= link_to "List of Patients", patients_path %>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="panel panel-default">
+                <div class="panel-heading">Records</div>
+                <div class="panel-body">
+                    <%  if @patient.records.any?  %>
+                            <%= render @records  %>
+                    <%  else  %>
+                        no records
+                    <%  end  %>
+                </div>
+            </div>
+        </div>
+    </div>
+<%  end  %>

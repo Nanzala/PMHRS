@@ -1,4 +1,5 @@
 class PatientsController < ApplicationController
+    before_action :authenticate_staff!
     def new
         @patient = Patient.new
     end
@@ -17,6 +18,7 @@ class PatientsController < ApplicationController
 
     def show
         @patient = Patient.find(params[:id])
+        @records = @patient.records
     end
 
     def edit
