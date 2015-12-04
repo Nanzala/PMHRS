@@ -1,16 +1,18 @@
 require 'test_helper'
 
 class PatientTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
-
+ 
   def setup
-    @patient = Patient.new(name: 'test patient', gender: 'female', date_of_birth: '12-12-2012', phone: '0201234567', email: 'patient@mail.com', next_of_kin: 'parent', next_of_kin_contact: '0201234132', ssn: '123123123')
+    @patient = Patient.new(name: 'Adult Patient', gender: 'Female', date_of_birth: '12-12-1980', phone: '0201234567', email: 'adultpatient@email.com', next_of_kin: 'Happy Relative', next_of_kin_contact: '0201234132', ssn: '123123123')
   end
 
-  test "valid register patient" do    
+  test "valid register adult patient" do    
     assert @patient.valid?
+  end
+
+  test "valid register child patient" do    
+    @patient.date_of_birth = '12-12-2010'
+    assert_not @patient.valid?
   end
 
   test "patient name not blank" do

@@ -11,27 +11,27 @@ class Patient < ActiveRecord::Base
         length: { within: 10..12 }
     validates :next_of_kin, presence: true
     validates :next_of_kin_contact, presence: true,
-        length: {within: 10..12 }
- #   validates :parent_ssn, presence: true 
-#      if: Proc.new do |p| 
- #       age(p.date_of_birth) < MINOR_AGE_LIMIT 
-  #    end 
+        length: { within: 10..12 }
+    validates :parent_ssn, presence: true, 
+      :if => Proc.new { |p| 
+        age(p.date_of_birth) < MINOR_AGE_LIMIT 
+       }
 
     has_many :records
 
     def age(birthday)
+    #TODO Fix the age method to remove error on month/day is not defined.
         today = Date.today
-
-        if today.month > birthday.month
-            today.year - birthday.year
-        elsif today.month < birthday.month
-            today.year - birthday.year - 1
-        else
-            if today.day >= birthday.day
-                today.year - birthday.year
-            else
-                today.year - birthday.year - 1
-            end
-        end
+      #  if today.month > birthday.month
+      #      today.year - birthday.year
+      #  elsif today.month < birthday.month
+      #      today.year - birthday.year - 1
+      #  else
+      #      if today.day >= birthday.day
+      #          today.year - birthday.year
+      #      else
+      #          today.year - birthday.year - 1
+      #      end
+      #  end
     end
 end
