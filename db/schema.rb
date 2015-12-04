@@ -96,6 +96,7 @@ ActiveRecord::Schema.define(version: 20151130231147) do
   end
 
   create_table "records", id: :uuid, default: "gen_random_uuid()", force: :cascade do |t|
+    t.string   "hospital_id",    null: false
     t.string   "staff_id",       null: false
     t.integer  "height"
     t.integer  "weight"
@@ -106,6 +107,7 @@ ActiveRecord::Schema.define(version: 20151130231147) do
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.uuid     "patient_id"
+    t.uuid     "record_id"
   end
 
   add_index "records", ["patient_id"], name: "index_records_on_patient_id", using: :btree
@@ -139,4 +141,5 @@ ActiveRecord::Schema.define(version: 20151130231147) do
   add_index "staffs", ["unlock_token"], name: "index_staffs_on_unlock_token", unique: true, using: :btree
 
   add_foreign_key "records", "patients"
+  add_foreign_key "records", "records"
 end
