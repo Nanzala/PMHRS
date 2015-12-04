@@ -37,5 +37,6 @@ Rails.application.routes.draw do
     resources :staffs
     resources :patients do
         resources :records
+    resources :medications
     end
 end
