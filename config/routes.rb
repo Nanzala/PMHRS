@@ -33,11 +33,19 @@ Rails.application.routes.draw do
     get 'reset' => 'app#reset'
     get 'system' => 'dashboard#home'
 
+
+    scope :staffs do
+        resources :staffs
+    end
+
     resources :hospitals
+
     get 'staffs/applications' => 'staff_signup#staff_applications'
+
     resources :staff_signup # only: [:new, :create, :show, :edit, :update, :destroy] 
 
     post 'search' => 'app#search_ssn'
+
     resources :patients do
         resources :records
     end
