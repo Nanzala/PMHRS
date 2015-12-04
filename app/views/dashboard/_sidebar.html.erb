@@ -1,0 +1,34 @@
+<!-- Sidebar -->
+<div id="sidebar-wrapper">
+    <ul class="sidebar-nav">
+        <%# <li class="sidebar-brand"> %>
+            <%#     <a href="#"> %>
+                <%#         Start Bootstrap %>
+                <%#     </a> %>
+            <%# </li> %>
+        <li>
+            <a href="#">Staff</a>
+            <ul>
+                <li><%=  link_to 'Staff Applications', new_staff_signup_path %></li>
+                <li><%=  link_to 'View Staff Details', staffs_applications_path %></li>
+                <li><%= link_to "Open modal", staffs_applications_path, :remote => true, data:{toggle: "modal", target: "modal-edit-signup"} %></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">Hospitals</a>
+        </li>
+        <li>
+            <a href="#">Patients</a>
+        </li>
+        <li>
+            <a href="#">About</a>
+        </li>
+        <li>
+            <a href="#">Services</a>
+        </li>
+        <li>
+            <a href="#">Contact</a>
+        </li>
+    </ul>
+</div>
+<!-- /#sidebar-wrapper -->

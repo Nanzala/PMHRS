@@ -1,5 +1,30 @@
-<%= render :layout => 'layouts/default' do  %>
-    <%=  @staffs_signups.each do |staff_signup| %>
-        <%=  staff_signup.email  %><br />
-    <%  end  %>
+<%= render :layout => 'dashboard/dashboard' do  %>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Staff Email</th>
+                            <th>Valid Until</th>
+                            <th>Activated</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <%  @staffs_signups.each do |staff_signup| %>
+                        <tr <%  if staff_signup.activated %>
+                            class="success" 
+                        <% end %> >
+                        <td><%=  staff_signup.email  %></td>
+                        <td><%=  staff_signup.valid_until.to_s %></td>
+                        <td><%=  staff_signup.activated %></td>
+                        <td>
+                            <%=  render 'components/button', custom_class: 'btn-primary edit-staff-signup', text: 'Edit'  %>
+                        </td>
+                    </tr>
+                <%  end  %>
+            </table>
+        </div>
+    </div>
+</div>
 <%  end  %>
