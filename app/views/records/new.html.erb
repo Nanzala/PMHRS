@@ -1,23 +1,57 @@
-<h1> Fill in Patient Records </h1>
+<%= render :layout => 'layouts/default' do %>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3 well">
+      <h1> Fill in Patient Records </h1>
+      <%= form_for @record, :html => {class: "form-horizontal" }, url: {action: "create"} do |r| %>
+      <% unless @record.errors.empty? %>
+      <div id="error_explanation">
+        <h3> <% pluralize(@record.errors.count, "error") %> found</h3>
+        <ul>
+          <% @record.errors.full_messages.each do |msg| %>
+          <li> <%= msg %> </li>
+          <% end %>
+        </ul>
+      </div>
+      <% end %>
 
-<% unless @record.errors.empty? -%>
-    <h3> <% pluralize(@record.errors.count, "error") %> </h3>
-    <ul>
-        <% @record.errors.full_messages.each do |msg| %>
-            <li> <%=msg%> </li>
-        <% end -%>
-    </ul>
+  <div class="form-group">
+      <%= r.label :height, :class => "col-sm-4 control-label" %>
+    <div class="col-sm-8">
+      <%= r.text_field :height, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+      <%= r.label :weight, :class => "col-sm-4 control-label" %>
+    <div class="col-sm-8">
+      <%= r.text_field :weight, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+      <%= r.label :temperature, :class => "col-sm-4 control-label" %>
+    <div class="col-sm-8">
+      <%= r.text_field :temperature, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+      <%= r.label :blood_pressure, :class => "col-sm-4 control-label" %>
+    <div class="col-sm-8">
+      <%= r.text_field :blood_pressure, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+      <%= r.label :symptoms, :class => "col-sm-4 control-label" %>
+    <div class="col-sm-8">
+      <%= r.text_field :symptoms, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+      <%= r.label :diagnosis, :class => "col-sm-4 control-label" %>
+    <div class="col-sm-8">
+      <%= r.text_field :diagnosis, :class => "form-control" %>
+    </div>
+  </div>
+
+  <%= r.submit :class => 'btn btn-primary btn-large' %><div class="col-sm-8">
+  <% end %>
+  </div>
 <% end %>
-
-<h3> Fill in Record Details </h3>
-<p>
-    <%= form_for @record, url: {action: "create"} do |r| %>
-        Height: 		<%= r.text_field :height %><br />
-        Weight: 		<%= r.text_field :weight %><br />
-        Temperature: 	<%= r.text_field :temperature %><br />
-        Blood Pressure: <%= r.text_field :blood_pressure %><br />
-        Symptoms: 		<%= r.text_field :symptoms %><br />
-        Diagnosis: 		<%= r.text_field :diagnosis %><br />
-
-        <%= r.submit 'Submit Patient Records' %>
-    <% end %>
