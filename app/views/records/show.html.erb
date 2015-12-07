@@ -1,17 +1,20 @@
-<h3> Patient Record </h3>
+<%=  render :layout => 'layouts/default' do  %>
+  <div class="row">
+    <div class="col-md-8">
+      <div class="panel panel-default">
+        <div class="panel-heading">Patient Record</div>
+        <div class="well">
 
-<p>
-    Height: <%= @record.height %>
-Weight: <%= @record.weight %>
-        Temperature: <%= @record.temperature %>
-    Blood pressure: <%= @record.blood_pressure %>
-Symptoms: <%= @record.symptoms %>
-        Diagnosis: <%= @record.diagnosis %>
-</p>
-
-<div class="panel panel-default">
-    <div class="panel-heading">Panel heading without title</div>
-    <div class="panel-body">
-        Panel content
+        <p>
+          Height: <%= @record.height %><br />
+          Weight: <%= @record.weight %><br />
+          Temperature: <%= @record.temperature %><br />
+          Blood pressure: <%= @record.blood_pressure %><br />
+          Symptoms: <%= @record.symptoms %><br />
+          Diagnosis: <%= @record.diagnosis %><br />
+        </p>
+        </div>
+      </div>
     </div>
-</div>
+  </div>
+<% end %>
