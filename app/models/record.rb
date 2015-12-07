@@ -3,15 +3,15 @@ class Record < ActiveRecord::Base
   validates :staff_id,    presence:true
 
   belongs_to :patient
-  has_many  :hospitals, through: :permissions
+  has_many :hospitals, through: :permissions
   has_many :staffs
   has_many :medications
   has_many :med_tests
 
   def self.save_record?(record, hospital_id)
     Record.transaction do
-      record.save
-      Permission.create(record_id: record.id, hospital_id: hospital_id)
+      record.save!
+      Permission.create!(record_id: record.id, hospital_id: hospital_id)
     end
       return true
   end
