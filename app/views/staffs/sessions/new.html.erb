@@ -1,0 +1,31 @@
+
+<%=  render :layout => 'layouts/default' do %>
+    <div class="col-md-4 col-md-offset-4 well">
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name), :html => {class: "form-signin"}) do |f| %>
+            <h2 class="form-signin-heading">Login in as Staff</h2>
+
+            <%= f.label :email, class:"sr-only" %>
+            <%= f.email_field :email, class: "form-control", placeholder: "Staff Email",  autofocus: true %>
+
+            <%= f.label :password, class:"sr-only" %>
+            <%= f.password_field :password, class: "form-control", placeholder: "Password", autocomplete: "off" %>
+
+            <%= label_tag :ref,"", class:"sr-only" %>
+            <%= text_field_tag :ref, "", class: "form-control", placeholder: "Hospital Ref",  autofocus: true %>
+
+            <%# <div class="checkbox"> %>
+                <%#     <label> %>
+                    <%#         <% if devise_mapping.rememberable? -%> 
+                        <%#             <1%# <%= f.label :remember_me %2> %1> %>
+                        <%#             <%= f.check_box :remember_me %1>Remember me %>
+                        <%#         <% end -%> 
+                    <%#     </label> %>
+                <%# </div> %>
+            <div class="actions">
+                <%= f.submit "Log in", class:"btn btn-lg btn-primary btn-block" %>
+            </div>
+            <br />
+            <%= render "staffs/shared/links" %>
+        <% end %>
+    </div>
+<%  end  %>
