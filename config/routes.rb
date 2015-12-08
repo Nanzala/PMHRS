@@ -33,8 +33,7 @@ Rails.application.routes.draw do
     get 'reset' => 'app#reset'
     get 'system' => 'dashboard#home'
 
-
-    scope :staffs do
+    scope  module: 'staffs' do
         resources :staffs
     end
 
