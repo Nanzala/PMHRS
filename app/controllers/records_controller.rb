@@ -9,13 +9,13 @@ class RecordsController < ApplicationController
     def create
         @record = Patient.find(params[:patient_id]).records.build(record_params)
         @record.staff_id = current_staff.id
-       
-      if Record.save_record?(@record, session[:hospital_id])
 
-            redirect_to patient_record_path :patient_id => @record.patient_id, :id => @record.id
-        else
-            render 'new'
-        end
+      if @record.valid?
+        Record.save_record?(@record, session[:hospital_id])
+        redirect_to patient_record_path :patient_id => @record.patient_id, :id => @record.id
+      else
+        render 'new'
+      end
     end
 
     def show
