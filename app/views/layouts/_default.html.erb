@@ -1,6 +1,11 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
+                <%  flash.each do |msg_type, msg|  %>
+                    <div class="alert alert-<%= "warning" if msg_type == 'notice' || 'alert' %>"><%= msg %></div>
+                <%  end  %>
+        </div>
+        <div class="col-md-12">
             <%=  yield  %>
         </div>
     </div>

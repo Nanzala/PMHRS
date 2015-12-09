@@ -1,5 +1,31 @@
 <div class="well">
-<%=  record.id  %><br />
+    <div class="row">
+        <div class="col-md-6">Create Date: <%=  record.created_at %></div>
+        <div class="col-md-6">Last Updated: <%=  record.updated_at %></div>
+    </div>
+    <div class="row">
 
+        <div class="col-md-3">Height: <%=  record.height %></div>
+        <div class="col-md-3">Weight: <%=  record.weight %></div>
+        <div class="col-md-3">Temperature: <%=  record.temperature %></div>
+        <div class="col-md-3">BP: <%=  record.blood_pressure %></div>
+
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            Symptoms: 
+            <p><%=  record.symptoms %></p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            Diagnosis: 
+            <p><%=  record.diagnosis %></p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <%=  link_to "Update Record", edit_patient_record_path(:patient_id => @patient.id, :id => record.id), class: "btn btn-primary" %> 
+        </div>
+    </div>
 </div>
-
