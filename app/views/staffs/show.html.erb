@@ -1,0 +1,12 @@
+
+<h3> Staff Record </h3>
+<p>
+  Names :        <%= @staff.name %><br />
+  Role  :        <%= @staff.role %><br />
+  Address :      <%= @staff.address %><br />
+  Phone Number : <%= @staff.phone %><br />
+</p>
+<p> <%= link_to "Register Staff", new_staff_path %><br />
+    <%= link_to "Edit Staff Details", edit_staff_path %><br />
+    <%= link_to "List of Staff Members", staffs_path %>
+</p>
