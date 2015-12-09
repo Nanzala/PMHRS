@@ -7,12 +7,7 @@
                 <%#     </a> %>
             <%# </li> %>
         <li>
-            <a href="#">Staff</a>
-            <ul>
-                <li><%=  link_to 'Staff Applications', new_staff_signup_path %></li>
-                <li><%=  link_to 'View Staff Details', staffs_applications_path %></li>
-                <li><%= link_to "Open modal", staffs_applications_path, :remote => true, data:{toggle: "modal", target: "modal-edit-signup"} %></li>
-            </ul>
+            <%=  link_to "Staffs", staffs_staffs_path  %>
         </li>
         <li>
             <a href="#">Hospitals</a>

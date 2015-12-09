@@ -1,3 +1,9 @@
-<%=  render layout: 'layouts/default' do %>
-    nice one
+<%=  render 'staffs/staffs/links'  %>
+<%=  render layout: 'dashboard/dashboard' do %>
+    <div class="row">
+        <div class="col-md-8">
+            <%=  render @staffs %>
+        </div>
+    </div>
+
 <%  end  %>

@@ -1,0 +1,10 @@
+<%=  render 'staffs/staffs/links'  %>
+<%=  render layout: 'dashboard/dashboard' do %>
+    <%=  @staff.id  %>
+    <%=  @staff.name  %>
+    <p>Last Signin: <%=  @staff.last_sign_in_at  %></p>
+    <p>Sign In Count: <%=  @staff.sign_in_count  %></p>
+    <p>Created at: <%= @staff.created_at  %></p>
+    <p>Signin IP: <%=  @staff.current_sign_in_ip  %></p>
+    <p>Failed Attempts: <%=  @staff.failed_attempts  %></p>
+<%  end  %>

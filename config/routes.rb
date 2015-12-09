@@ -34,7 +34,7 @@ Rails.application.routes.draw do
     get 'system' => 'dashboard#home'
 
 
-    scope :staffs do
+    namespace :staffs do
         resources :staffs
     end
 
