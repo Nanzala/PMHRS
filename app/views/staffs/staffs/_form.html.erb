@@ -1,0 +1,40 @@
+<%= form_for staff, url: staffs_staff_path do |f| %>
+    <% if staff.errors.any? %>
+        <div id=error_explanation>
+            <h3><%= pluralize(staff.errors.count, "error") %> found</h3>
+            <ul>
+                <% staff.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+    <div class="form-group">
+        <%= f.label :name, 'Staff Name' %>
+        <%= f.text_field :name, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+        <%= f.label :email, 'Staff Email' %>
+        <%= f.text_field :email, class: 'form-control' %>
+    </div>
+    <%  if admin_signed_in?  %>
+        <div class="form-group">
+            <%= f.label :role, 'Staff Role' %>
+            <%= f.text_field :role, class: 'form-control' %>
+        </div>
+    <%  end  %>
+    <div class="form-group">
+        <%= f.label :address, 'Address' %>
+        <%= f.text_field :address, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+        <%= f.label :phone, 'Phone' %>
+        <%= f.text_field :phone, class: 'form-control' %>
+    </div>
+    <%# <div class="form-group"> %>
+        <%# <%= f.label :valid_until, 'Staff Role' %1> %>
+        <%# <%= f.date_field :valid_until, class: 'form-control' %1><br /> %>
+    <%# </div> %>
+    <%= f.submit 'Save', :class => 'btn btn-primary btn-large' %>
+<% end %>
+

@@ -1,6 +1,8 @@
-<div class="container">
+
+<%=  render 'hospitals/links'  %>
+<%=  render layout: 'dashboard/dashboard' do %>
     <div class="row">
-        <div class="col-md-4 col-md-offset-4">
+        <div class="col-md-4">
 
             <h3> Give Hospital Details </h3>
 
@@ -15,7 +17,7 @@
                 </div>
             <% end %>
 
-            <%= form_for Hospital.new do |h| %>
+            <%= form_for @hospital do |h| %>
 
                 <div class="form-group">
                     <%= h.label :name %>
@@ -40,4 +42,4 @@
             <% end %>
         </div>
     </div>
-</div>
+<%  end  %>

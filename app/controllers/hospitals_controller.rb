@@ -4,6 +4,10 @@ class HospitalsController < ApplicationController
         @hospital = Hospital.new
     end
 
+    def index
+        @hospitals = Hospital.all
+    end
+
     def create
         @hospital = Hospital.new(hospital_params)
 
@@ -24,10 +28,14 @@ class HospitalsController < ApplicationController
     end
 
     def edit
-        @hospital = Record.find(params[:id])
+        @hospital = Hospital.find(params[:id])
         render 'new'
     end
 
+    def destroy
+        Hospital.destroy params[:id]
+        redirect_to hospitals_path
+    end
     def update
         @hospital = Hospital.find(params[:id])
 

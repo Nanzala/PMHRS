@@ -9,7 +9,9 @@
                 <div class="col-md-1">
                     <%=  link_to 'Back', :back, class: 'btn btn-small btn-danger btn-block'  %>  
                 </div>
-                <%=  yield :links  %>
+                <div class="row top-links">
+                    <%=  yield :links  %>
+                </div>
             </div>
             <%=  yield  %>
         </div>
