@@ -1,4 +1,4 @@
-class StaffSignupController < ApplicationController
+class Staffs::StaffSignupController < ApplicationController
     before_action :authenticate_admin!
     def new
         @staff = StaffSignup.new   

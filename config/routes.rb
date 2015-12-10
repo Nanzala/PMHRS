@@ -36,13 +36,13 @@ Rails.application.routes.draw do
 
     namespace :staffs do
         resources :staffs
+        resources :staff_signup 
+        get 'applications' => 'staff_signup#staff_applications'
     end
 
     resources :hospitals
 
-    get 'staffs/applications' => 'staff_signup#staff_applications'
 
-    resources :staff_signup # only: [:new, :create, :show, :edit, :update, :destroy] 
 
     post 'search' => 'app#search_ssn'
 
