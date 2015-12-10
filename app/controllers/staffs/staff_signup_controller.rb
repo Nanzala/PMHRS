@@ -8,6 +8,7 @@ class Staffs::StaffSignupController < ApplicationController
         @staff = StaffSignup.new(staff_params)
 
         if @staff.save
+            StaffMailer.signup_email(@staff).deliver_now
             flash[:notice] = "Staff Registered Successfully"
             redirect_to system_path
         else
