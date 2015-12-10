@@ -1,18 +1,34 @@
-<div class="container">
-<div class="row">
-<div class="col-md-4 col-md-offset-4 well">
+<%=  render 'hospitals/links'  %>
+<%=  render layout: 'dashboard/dashboard' do %>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-header">
+                    <h3> Hospital Record </h3>
+                </div>
+                <div class="panel-body">
 
-<h3> Hospital Record </h3>
-
-<p>
-Hospital name: <%= @hospital.name %><br />
-Ref: <%= @hospital.ref %><br />
-Location:      <%= @hospital.location %><br />
-Level:         <%= @hospital.level %><br />
-Address:       <%= @hospital.address %><br />
-Created:       <%= @hospital.created_at %><br />
-Updated:       <%= @hospital.updated_at %><br />   
-</p> 
-</div>
-</div>
-</div>
+                    <p>
+                        Hospital name: <%= @hospital.name %><br />
+                        Ref: <%= @hospital.ref %><br />
+                        Location:      <%= @hospital.location %><br />
+                        Level:         <%= @hospital.level %><br />
+                        Address:       <%= @hospital.address %><br />
+                        Created:       <%= @hospital.created_at %><br />
+                        Updated:       <%= @hospital.updated_at %><br />   
+                    </p> 
+                    <%= link_to 'Edit', edit_hospital_path(@hospital.id), class: 'btn btn-small'  %>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="panel panel-default">
+                <div class="panel-header">
+                    <h3> Hospital Staff </h3>
+                    <div class="panel-body">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<%  end  %>

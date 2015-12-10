@@ -1,0 +1,20 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class="tile-block tile-gray">
+            <div class="tile-header"> 
+                <a href="#">
+                    Name: <%=  staff.name %>
+                </a>
+            </div>
+            <div class="tile-content">
+                <p>Role: <%=  staff.role  %></p>
+                <p>Address: <%=  staff.address  %></p>
+                <p>Phone: <%=  staff.phone  %></p>
+                <p>SSN: <%=  staff.ssn  %></p>
+            </div>
+            <div class="tile-footer">
+                <%=  link_to 'Details', staffs_staff_path(staff.id), class: 'btn btn-primary'  %>
+            </div>
+        </div> 
+    </div>
+</div>

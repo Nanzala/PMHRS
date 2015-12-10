@@ -16,6 +16,7 @@ class AppController < ApplicationController
 
     def reset
         reset_session
-        render nothing: true
+        # render nothing: true
+        redirect_to root_path 
     end
 end
