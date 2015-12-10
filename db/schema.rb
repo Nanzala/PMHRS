@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151201192505) do
+ActiveRecord::Schema.define(version: 20151209223526) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -88,7 +88,7 @@ ActiveRecord::Schema.define(version: 20151201192505) do
 
   add_index "patients", ["encrypted_ssn"], name: "index_patients_on_encrypted_ssn", using: :btree
 
-  create_table "permissions", id: :uuid, default: "gen_random_uuid()", force: :cascade do |t|
+  create_table "permissions", force: :cascade do |t|
     t.uuid     "record_id",   null: false
     t.uuid     "hospital_id", null: false
     t.datetime "created_at",  null: false
@@ -96,7 +96,6 @@ ActiveRecord::Schema.define(version: 20151201192505) do
   end
 
   create_table "records", id: :uuid, default: "gen_random_uuid()", force: :cascade do |t|
-    t.string   "hospital_id",    null: false
     t.string   "staff_id",       null: false
     t.integer  "height"
     t.integer  "weight"
