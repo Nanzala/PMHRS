@@ -38,6 +38,10 @@ Rails.application.routes.draw do
         resources :staffs
         resources :staff_signup 
         get 'applications' => 'staff_signup#staff_applications'
+        get 'appoint/:staff_id' => 'staffs#new_appointment'
+        get 'link/:staff_id/to/:hospital_id' => 'staffs#create_appointment'
+        get 'destroy/:staff_id/to/:hospital_id' => 'staffs#destroy_appointment'
+
     end
 
     resources :hospitals
@@ -48,6 +52,6 @@ Rails.application.routes.draw do
 
     resources :patients do
         resources :records
-    resources :medications
+        resources :medications
     end
 end

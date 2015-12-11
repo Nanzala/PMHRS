@@ -7,5 +7,6 @@
     <p>Created at: <%= @staff.created_at  %></p>
     <p>Signin IP: <%=  @staff.current_sign_in_ip  %></p>
     <p>Failed Attempts: <%=  @staff.failed_attempts  %></p>
-    <%=  link_to 'Edit', edit_staffs_staff_path(@staff.id) %>
+    <%=  link_to 'Edit', edit_staffs_staff_path(@staff.id), class: 'btn btn-primary' %>
+    <%=  link_to 'Assign Hospital', staffs_path(@staff.id), class: 'btn btn-primary' %>
 <%  end  %>
