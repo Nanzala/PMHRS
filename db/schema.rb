@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151209223526) do
+ActiveRecord::Schema.define(version: 20151210215513) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,6 +56,16 @@ ActiveRecord::Schema.define(version: 20151209223526) do
   end
 
   add_index "hospitals", ["ref"], name: "index_hospitals_on_ref", using: :btree
+
+  create_table "hospitals_staffs", force: :cascade do |t|
+    t.uuid     "hospital_id"
+    t.uuid     "staff_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "hospitals_staffs", ["hospital_id"], name: "index_hospitals_staffs_on_hospital_id", using: :btree
+  add_index "hospitals_staffs", ["staff_id"], name: "index_hospitals_staffs_on_staff_id", using: :btree
 
   create_table "med_tests", force: :cascade do |t|
     t.string   "record_id"
@@ -151,6 +161,8 @@ ActiveRecord::Schema.define(version: 20151209223526) do
   add_index "staffs", ["reset_password_token"], name: "index_staffs_on_reset_password_token", unique: true, using: :btree
   add_index "staffs", ["unlock_token"], name: "index_staffs_on_unlock_token", unique: true, using: :btree
 
+  add_foreign_key "hospitals_staffs", "hospitals"
+  add_foreign_key "hospitals_staffs", "staffs"
   add_foreign_key "records", "patients"
   add_foreign_key "records", "records"
 end

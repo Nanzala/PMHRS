@@ -21,6 +21,20 @@ class Staffs::StaffsController < ApplicationController
         end
     end
 
+    def new_appointment
+        @staff = Staff.find params[:staff_id]
+        @hospitals = Hospital.all
+    end
+
+    def create_appointment
+        Staff.find(params[:staff_id]).hospitals << Hospital.find(params[:hospital_id])
+        redirect_to staffs_path(params[:staff_id])
+    end
+    def destroy_appointment
+        Staff.find(params[:staff_id]).hospitals.delete(Hospital.find(params[:hospital_id]))
+        redirect_to staffs_path(params[:staff_id])
+    end
+
     private
     def update_params
         params.require(:staff).permit(:name, :email, :role, :address, :phone)

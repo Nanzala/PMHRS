@@ -25,6 +25,7 @@ class HospitalsController < ApplicationController
 
     def show
         @hospital = Hospital.find(params[:id])
+        @staffs = Staff.all
     end
 
     def edit
@@ -47,6 +48,21 @@ class HospitalsController < ApplicationController
             render 'new'
         end
     end
+
+    def new_appointment
+        @hospital = Hospital.find params[:hospital_id]
+    end
+
+    def create_appointment
+        Hospital.find(params[:hospital_id]).staffs << Staff.find(params[:staff_id])
+        redirect_to hospital_path(params[:hospital_id])
+    end
+
+    def destroy_appointment
+        Hospital.find(params[:hospital_id]).staffs.delete(Staff.find(params[:staff_id]))
+        redirect_to hospital_path(params[:hospital_id])
+    end
+
 
     private
     def hospital_params
