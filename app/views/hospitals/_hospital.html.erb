@@ -1,0 +1,11 @@
+<tr>
+    <td><%=  hospital.name  %></td>
+    <td><%=  hospital.location  %></td>
+    <td><%=  hospital.level  %></td>
+    <td><%=  hospital.address  %></td>
+    <td><%=  hospital.ref  %></td>
+    <td>
+        <%= link_to 'Details', hospital_path(hospital.id), class: 'btn btn-success' %>
+        <%= link_to 'Delete', hospital_path(hospital.id), class: 'btn btn-danger', method: :delete, data: {confirm: "Are you sure?"}  %>
+    </td>
+</tr>

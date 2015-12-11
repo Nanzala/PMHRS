@@ -1,0 +1,27 @@
+
+<%=  render 'hospitals/links'  %>
+<%=  render layout: 'dashboard/dashboard' do %>
+    <div class="row">
+        <div class="col-md-9">
+            <%  if @hospitals.any?  %>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Location</th>
+                        <th>Level</th>
+                        <th>Address</th>
+                        <th>Reference</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <%=  render @hospitals %>
+            </table>
+        <%  else  %>
+            No Hospitals Present
+        <%  end  %>
+        </div>
+    </div>
+
+<%  end  %>
+

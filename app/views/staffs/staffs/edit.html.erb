@@ -1,0 +1,11 @@
+
+<%=  render 'staffs/staffs/links'  %>
+<%= render :layout => 'dashboard/dashboard' do %>
+    <div class="row">
+        <div class="col-md-8">
+            <h2>Edit Staff Details</h2>
+            <%=  render 'staffs/staffs/form', staff: @staff  %>
+        </div>
+    </div>
+
+<% end %>

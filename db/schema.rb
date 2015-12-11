@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151130231147) do
+ActiveRecord::Schema.define(version: 20151210215513) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,16 @@ ActiveRecord::Schema.define(version: 20151130231147) do
 
   add_index "hospitals", ["ref"], name: "index_hospitals_on_ref", using: :btree
 
+  create_table "hospitals_staffs", force: :cascade do |t|
+    t.uuid     "hospital_id"
+    t.uuid     "staff_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "hospitals_staffs", ["hospital_id"], name: "index_hospitals_staffs_on_hospital_id", using: :btree
+  add_index "hospitals_staffs", ["staff_id"], name: "index_hospitals_staffs_on_staff_id", using: :btree
+
   create_table "med_tests", force: :cascade do |t|
     t.string   "record_id"
     t.string   "test"
@@ -88,7 +98,7 @@ ActiveRecord::Schema.define(version: 20151130231147) do
 
   add_index "patients", ["encrypted_ssn"], name: "index_patients_on_encrypted_ssn", using: :btree
 
-  create_table "permissions", id: :uuid, default: "gen_random_uuid()", force: :cascade do |t|
+  create_table "permissions", force: :cascade do |t|
     t.uuid     "record_id",   null: false
     t.uuid     "hospital_id", null: false
     t.datetime "created_at",  null: false
@@ -96,7 +106,6 @@ ActiveRecord::Schema.define(version: 20151130231147) do
   end
 
   create_table "records", id: :uuid, default: "gen_random_uuid()", force: :cascade do |t|
-    t.string   "hospital_id",    null: false
     t.string   "staff_id",       null: false
     t.integer  "height"
     t.integer  "weight"
@@ -111,6 +120,18 @@ ActiveRecord::Schema.define(version: 20151130231147) do
   end
 
   add_index "records", ["patient_id"], name: "index_records_on_patient_id", using: :btree
+
+  create_table "staff_signups", force: :cascade do |t|
+    t.string   "email"
+    t.string   "token"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.date     "valid_until"
+    t.boolean  "activated",   default: false
+  end
+
+  add_index "staff_signups", ["email"], name: "index_staff_signups_on_email", unique: true, using: :btree
+  add_index "staff_signups", ["token"], name: "index_staff_signups_on_token", using: :btree
 
   create_table "staffs", id: :uuid, default: "gen_random_uuid()", force: :cascade do |t|
     t.string   "name"
@@ -140,6 +161,8 @@ ActiveRecord::Schema.define(version: 20151130231147) do
   add_index "staffs", ["reset_password_token"], name: "index_staffs_on_reset_password_token", unique: true, using: :btree
   add_index "staffs", ["unlock_token"], name: "index_staffs_on_unlock_token", unique: true, using: :btree
 
+  add_foreign_key "hospitals_staffs", "hospitals"
+  add_foreign_key "hospitals_staffs", "staffs"
   add_foreign_key "records", "patients"
   add_foreign_key "records", "records"
 end

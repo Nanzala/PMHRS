@@ -9,4 +9,7 @@ class Staff < ActiveRecord::Base
         :timeoutable
     belongs_to :record
 
+    has_many :hospitals, through: :assingments
+
+    has_and_belongs_to_many :hospitals
 end

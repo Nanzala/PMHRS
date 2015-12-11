@@ -1,0 +1,11 @@
+<% content_for :links do  %>
+    <div class="col-md-3">
+        <%=  link_to 'Create Applications', new_staffs_staff_signup_path, class: 'btn btn-primary btn-success btn-block' %>
+    </div>
+    <div class="col-md-3">
+        <%=  link_to 'Staffs Application', staffs_applications_path, class: 'btn btn-primary btn-success btn-block' %>
+    </div>
+    <div class="col-md-3">
+        <%=  link_to 'All Staffs', staffs_staffs_path, class: 'btn btn-primary btn-success btn-block' %>
+    </div>
+<%  end  %>
