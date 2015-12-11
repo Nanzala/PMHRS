@@ -13,3 +13,29 @@
  *= require_tree .
  *= require_self
  */
+
+ body {
+    background-size: cover;
+    background-image: url('/assets/PMHRS.jpg');
+    opacity: 0.9;
+ }
+
+ .h:hover {
+   background-color: #FF7F50;
+   border-color: #FF7F50;
+ }
+ .btn-color {
+   background-color: #00C5CD;
+   border-color: #00C5CD;
+ }
+
+ .actions {
+     width: 100%;
+     font-size: 14px;
+     text-transform: uppercase;
+     font-weight: 500;
+     margin-top: 16px;
+     outline: 0;
+     cursor: pointer;
+     letter-spacing: 1px;
+ }

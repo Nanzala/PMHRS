@@ -1,3 +1,20 @@
 // Place all the styles related to the hospitals controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.form-signin {
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+    .form-signin-heading {
+        margin-bottom: 10px;
+        font-family: 'Open Sans' , sans-serif;
+        font-size: 20px;
+        font-weight: 600;
+        text-align: center;
+        color: #191919;
+        margin-top: 5%;
+        text-transform: uppercase;
+        letter-spacing: 4px;
+    }
+  }

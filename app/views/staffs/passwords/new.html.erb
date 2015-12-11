@@ -1,16 +1,16 @@
-<h2>Forgot your password?</h2>
+<%=  render :layout => 'layouts/default' do %>
+    <div class="col-md-4 col-md-offset-4 well">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name), :html => {class: "form-signin"}) do |f| %>
+          <h2 class="form-signin-heading">Forgot your password?</h2>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= devise_error_messages! %>
+          <%= f.label :email, class:"sr-only" %>
+          <%= f.email_field :email, class: "form-control", placeholder: "Staff Email",  autofocus: true %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
-  </div>
-<% end %>
-
-<%= render "staffs/shared/links" %>
+          <div class="actions">
+              <%= f.submit "Reset Password", class:"btn btn-lg h btn-color btn-block" %>
+          </div>
+          <br />
+          <%= render "staffs/shared/links" %>
+      <% end %>
+    </div>
+  <%  end  %>

@@ -1,4 +1,3 @@
-
 <%=  render :layout => 'layouts/default' do %>
     <div class="col-md-4 col-md-offset-4 well">
         <%= form_for(resource, as: resource_name, url: session_path(resource_name), :html => {class: "form-signin"}) do |f| %>
@@ -15,14 +14,14 @@
 
             <%# <div class="checkbox"> %>
                 <%#     <label> %>
-                    <%#         <% if devise_mapping.rememberable? -%> 
+                    <%#         <% if devise_mapping.rememberable? -%>
                         <%#             <1%# <%= f.label :remember_me %2> %1> %>
                         <%#             <%= f.check_box :remember_me %1>Remember me %>
-                        <%#         <% end -%> 
+                        <%#         <% end -%>
                     <%#     </label> %>
                 <%# </div> %>
             <div class="actions">
-                <%= f.submit "Log in", class:"btn btn-lg btn-primary btn-block" %>
+                <%= f.submit "Log in", class:"btn btn-lg h btn-color btn-block" %>
             </div>
             <br />
             <%= render "staffs/shared/links" %>
