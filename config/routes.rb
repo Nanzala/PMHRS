@@ -45,6 +45,8 @@ Rails.application.routes.draw do
     end
 
     resources :hospitals
+    get 'hospitals/link/:staff_id/to/:hospital_id', to: 'hospitals#create_appointment'
+    get 'hospitals/destroy/:staff_id/to/:hospital_id', to: 'hospitals#destroy_appointment'
 
 
 

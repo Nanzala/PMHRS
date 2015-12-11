@@ -26,9 +26,51 @@
                 <div class="panel-header">
                     <h3> Hospital Staff </h3>
                     <div class="panel-body">
-                    </div>
-                </div>
+                        <%  if @staffs.any?  %>
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Role</th>
+                                        <th>Email</th>
+                                        <th>SSN</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <% @staffs.each do |h| %>
+                                    <tr>
+                                        <td><%= h.name  %></td>
+                                        <td><%= h.role %></td>
+                                        <td><%= h.email %></td>
+                                        <td><%= h.ssn %></td>
+                                        <td>
+                                            <%  if @hospital.staffs.include? h  %>
+                                                <a href="/hospitals/destroy/<%=  h.id  %>/to/<%=  @hospital.id  %>" class="btn btn-danger">Terminate</a>
+                                                <%# <%=  link_to controller: "hospitals", %>
+                                                <%#     action: "destroy_appointment", %>
+                                                <%#     staffs_id: s.id, %>
+                                                <%#     hospital_id: @hospital.id do %1> %>
+                                                <%#     <button class="btn btn-danger">Terminate</button> %>
+                                                <%# <%  end  %1> %>
+
+                                        <% else  %>
+                                            <a href="/hospitals/link/<%=  h.id  %>/to/<%=  @hospital.id  %>" class="btn btn-primary">Assign</a>
+                                            <%# <%=  link_to controller: "hospitals", %>
+                                            <%#     action: "create_appointment", %>
+                                            <%#     staffs_id: h.id                                               do %1> %>
+                                            <%#     <button class="btn btn-primary">Assign</button> %>
+                                            <%# <%  end  %1> %>
+                                    <%  end  %>
+                                </td>
+                            </tr>
+                        <%  end  %>
+                    </table>
+                <%  else  %>
+                    No Staff Present
+                <%  end  %>
             </div>
         </div>
     </div>
+</div>
+</div>
 <%  end  %>
