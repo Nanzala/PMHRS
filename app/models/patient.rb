@@ -34,6 +34,7 @@ class Patient < ActiveRecord::Base
                 today.year - birthday.year - 1
             end
         end
+  end
 
   def convert_dob
     begin
