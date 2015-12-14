@@ -1,7 +1,6 @@
-
 <%=  render 'hospitals/links'  %>
 <%=  render layout: 'dashboard/dashboard' do %>
-    <div class="row">
+    <div class="row bg-body">
         <div class="col-md-4">
 
             <h3> Give Hospital Details </h3>
@@ -40,7 +39,7 @@
                     <%= h.text_field :address, :class => "form-control" %>
                 </div>
                 <div class="form-group">
-                    <%= h.submit 'Submit Hospital', :class => 'btn btn-primary btn-large'%>
+                    <%= h.submit 'Submit Hospital', :class => 'btn btn-lg h btn-color btn-block'%>
                 </div>
 
             <% end %>
