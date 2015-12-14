@@ -5,7 +5,7 @@ class Record < ActiveRecord::Base
   validates :height,      presence:true, numericality: { greater_than: 0, less_than: 240 }
   validates :weight,      presence:true, numericality: { greater_than: 0 }
   validates :temperature, presence:true, numericality: true
-  validates :hospital_id, presence:true
+
 
   belongs_to :patient
   validates_associated :patient

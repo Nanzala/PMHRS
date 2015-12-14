@@ -8,13 +8,15 @@ default: &default
     adapter: postgresql
     encoding: unicode
     pool: 5
+    host: localhost
+    port: 5433
+    username: katherine
+    password: !23qweASD
 
 development:
     <<: *default
-    host: localhost
     database: pmhrs_dev
-    username: <%= ENV['PG_DATABASE_USERNAME'] %>
-    password: <%= ENV['PG_DATABASE_PASSWORD'] %>
+
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
