@@ -45,7 +45,7 @@ class Staffs::StaffSignupController < ApplicationController
     def staff_params
         params.require(:staff_signup).permit(
             :email,
-            :valid_until
+            :role
         )
     end 
 end

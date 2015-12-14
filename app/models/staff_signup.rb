@@ -1,5 +1,5 @@
 class StaffSignup < ActiveRecord::Base
-    validates :valid_until, presence: true
+    
     validates :email, presence: true, uniqueness: true
     validate :staff_exists?
 
