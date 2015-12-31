@@ -1,0 +1,13 @@
+// Place all the styles related to the dashboard controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "admins/simple-sidebar.scss";
+
+#sidebar-wrapper{
+    margin-top: 10px;
+}
+
+.bg-body {
+   background-color: #E5E5E5;
+}

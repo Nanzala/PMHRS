@@ -1,19 +1,19 @@
 <%=  render :layout => 'layouts/default' do %>
-    <div class="col-md-6">
+    <div class="col-md-6 col-md-offset-3">
         <div class="well">
             <%= form_tag search_path do %>
                 <%= label_tag(:ssn, "Patient Social Security Number:") %>
                 <div id="ssn-search" class="input-group">
                     <%= text_field_tag :ssn, "", class: "form-control", placeholder: "SSN Number" %>
                     <span class="input-group-btn">
-                        <%= submit_tag "Go!", class:"btn btn-primary" %>
+                        <%= submit_tag "Go!", class:"btn btn-primary h btn-color" %>
                     </span>
                 </div>
             <%  end  %>
             <div class="row">
                 <div class="col-md-6">
                     <a href="<%= new_patient_url %>">
-                        <button class="btn btn-primary">Create New Patient</button>
+                        <button class="btn btn-primary h btn-color">Create New Patient</button>
                     </a>
                 </div>
             </div>

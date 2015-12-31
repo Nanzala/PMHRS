@@ -1,12 +1,9 @@
 require 'test_helper'
 
 class HospitalTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
 
   def setup
-    @hospital = Hospital.new(name: 'Achimota General', location: 'Achimota Area', level: 3, address: '123 Achimota, Ghana', ref: nil)
+    @hospital = Hospital.new(name: 'Achimota General', location: 'Achimota Area', level: 3, address: '123 Achimota, Ghana', ref: '123TEST')
   end
 
   test "valid hospital record" do
@@ -30,6 +27,11 @@ class HospitalTest < ActiveSupport::TestCase
 
   test "hospital address not blank" do
     @hospital.address = ' '
+    assert_not @hospital.valid?
+  end
+
+  test "hospital ref not blank" do
+    @hospital.ref = nil
     assert_not @hospital.valid?
   end
 end

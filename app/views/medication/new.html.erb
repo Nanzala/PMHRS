@@ -1,0 +1,18 @@
+<h1> Fill in Patient Medication </h1>
+
+<% unless @medication.errors.empty? -%>
+    <h3> <% pluralize(@medication.errors.count, "error") %> </h3>
+    <ul>
+        <% @medication.errors.full_messages.each do |msg| %>
+            <li> <%=msg%> </li>
+        <% end -%>
+    </ul>
+<% end %>
+
+<h3> Fill in Medication Details </h3>
+<p>
+   // <%= form_for @medication, url: {action: "create"} do |r| %>
+        Medication: <%= r.text_field :medication %><br />
+</p>
+        <%= r.submit 'Submit Patient Medication' %>
+<% end %>

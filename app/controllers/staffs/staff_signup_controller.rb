@@ -1,15 +1,16 @@
-class StaffsController < ApplicationController
+class Staffs::StaffSignupController < ApplicationController
     before_action :authenticate_admin!
     def new
-        @staff = Staff.new   
+        @staff = StaffSignup.new   
     end
 
     def create
-        @staff = Staff.new(staff_params)
+        @staff = StaffSignup.new(staff_params)
 
         if @staff.save
+            StaffMailer.signup_email(@staff).deliver_now
             flash[:notice] = "Staff Registered Successfully"
-            redirect_to @staff
+            redirect_to system_path
         else
             flash.now[:alert] = "Error! Staff not registered"
             render 'new'
@@ -17,16 +18,16 @@ class StaffsController < ApplicationController
     end
 
     def show
-        @staff = Staff.find(params[:id])
+        @staff = StaffSignup.find(params[:id])
     end
 
     def edit
-        @staff = Staff.find(params[:id])
+        @staff = StaffSignup.find(params[:id])
         render 'new'
     end
 
     def update
-        @staff = Staff.find(params[:id])
+        @staff = StaffSignup.find(params[:id])
 
         if @staff.update(staff_params)
             flash[:notice] = "Staff updated successfully"
@@ -37,13 +38,14 @@ class StaffsController < ApplicationController
         end
     end
 
+    def staff_applications
+        @staffs_signups = StaffSignup.all 
+    end
     private
     def staff_params
-        params.require(:staff).permit(
-            :name,
-            :role,
-            :address,
-            :phone
+        params.require(:staff_signup).permit(
+            :email,
+            :role
         )
     end 
 end

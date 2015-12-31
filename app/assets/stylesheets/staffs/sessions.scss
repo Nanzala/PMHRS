@@ -12,6 +12,14 @@ body {
     margin: 0 auto;
     .form-signin-heading {
         margin-bottom: 10px;
+        font-family: 'Open Sans' , sans-serif;
+        font-size: 20px;
+        font-weight: 600;
+        text-align: center;
+        color: #191919;
+        margin-top: 5%;
+        text-transform: uppercase;
+        letter-spacing: 4px;
     }
     .checkbox {
         margin-bottom: 10px;
@@ -23,23 +31,20 @@ body {
         //Instead of the line below you could use @include box-sizing($bs)
         box-sizing: border-box;
         padding: 10px;
-        font-size: 16px;
+        font-size: 12px;
         &:focus {
             z-index: 2;
         }
-    }
-    input[type="email"] {
-        margin-bottom: -1px;
-        //Instead of the line below you could use @include border-bottom-right-radius($radius)
-        border-bottom-right-radius: 0;
-        //Instead of the line below you could use @include border-bottom-left-radius($radius)
-        border-bottom-left-radius: 0;
-    }
-    input[type="password"] {
-        margin-bottom: 10px;
-        //Instead of the line below you could use @include border-top-left-radius($radius)
-        border-top-left-radius: 0;
-        //Instead of the line below you could use @include border-top-right-radius($radius)
-        border-top-right-radius: 0;
+        width: 100%;
+        background: 0;
+        border: 0;
+        border-bottom: 1px solid #999999;
+        outline: 0;
+        font-style: italic;
+        font-weight: 400;
+        letter-spacing: 1px;
+        margin-bottom: 5px;
+        color: #191919;
+        outline: 0;
     }
 }

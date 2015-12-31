@@ -1,0 +1,31 @@
+
+<%=  render 'staffs/staffs/links'  %>
+<%= render :layout => 'dashboard/dashboard' do %>
+    <div class="row">
+        <div class="col-md-4">
+            <h2>Create new staff Signup</h2>
+
+            <%= form_for @staff, url: staffs_staff_signup_index_path do |f| %>
+                <% if @staff.errors.any? %>
+                    <div id=error_explanation>
+                        <h3><%= pluralize(@staff.errors.count, "error") %> found</h3>
+                        <ul>
+                            <% @staff.errors.full_messages.each do |msg| %>
+                                <li><%= msg %></li>
+                            <% end %>
+                        </ul>
+                    </div>
+                <% end %>
+                <div class="form-group">
+                    <%= f.label :email, 'Staff Email' %>
+                    <%= f.text_field :email, class: 'form-control' %>
+                </div>
+                <div class="form-group">
+                    <%= f.label :valid_until, 'Staff Role' %>
+                    <%= f.date_field :valid_until, class: 'form-control' %><br />
+                </div>
+                <%= f.submit 'Create', :class => 'btn btn-primary btn-large' %>
+            <% end %>
+        </div>
+    </div>
+<%  end  %>

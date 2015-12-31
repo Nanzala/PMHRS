@@ -1,0 +1,49 @@
+
+<%=  render 'staffs/staffs/links'  %>
+<%=  render layout: 'dashboard/dashboard' do %>
+    <div class="row">
+        <div class="col-md-3">
+            <%=  render @staff, width: 12  %>
+        </div>
+        <div class="col-md-9">
+            <%  if @hospitals.any?  %>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Location</th>
+                            <th>Reference</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <% @hospitals.each do |h| %>
+                        <tr>
+                            <td><%=  h.name  %></td>
+                            <td><%=  h.location %></td>
+                            <td><%=  h.ref  %></td>
+                            <td>
+                                <%  if @staff.hospitals.include? h  %>
+                                    <%=  link_to controller: "staffs/staffs",
+                                        action: "destroy_appointment",
+                                        staffs_id: @staff_id,
+                                        hospital_id: h.id do %>
+                                        <button class="btn btn-danger">Terminate</button>
+                                    <%  end  %>
+                                <% else  %>
+                                    <%=  link_to controller: "staffs/staffs",
+                                        action: "create_appointment",
+                                        staffs_id: @staff_id,
+                                        hospital_id: h.id do %>
+                                        <button class="btn btn-primary">Assign</button>
+                                    <%  end  %>
+                                <%  end  %>
+                            </td>
+                        </tr>
+                    <%  end  %>
+                </table>
+            <%  else  %>
+                No Hospitals Present
+            <%  end  %>
+        </div>
+    </div>
+<% end  %>
